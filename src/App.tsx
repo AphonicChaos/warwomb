@@ -22,7 +22,11 @@ export const App = () => {
       onMouseMove={ruler.move}
     >
       <Layer>
-        <Ruler stroke="red" points={ruler.points} />
+        <Ruler
+          stroke="black"
+          points={ruler.points}
+          distance={ruler.distance}
+        />
       </Layer>
     </Stage>
   );

@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Line } from 'react-konva';
+import { 
+  Line,
+} from 'react-konva';
 import Konva from 'konva';
 import { rounded } from './utils';
+import { Tooltip } from './Tooltip';
 
 
 export const useRuler = () => {
@@ -45,20 +48,40 @@ export const useRuler = () => {
     ]);
   };
 
-  console.log(points, distance);
   return { down, up, move, points, distance };
 };
 
 export type RulerProps = {
   points: number[];
   stroke?: string;
+  distance?: number;
+  tooltipColor?: string;
+  tooltipBackgroundColor?: string;
 };
 
-export const Ruler = ({ points, stroke = "black" }: RulerProps) => {
+export const Ruler = ({ 
+  points, 
+  stroke = "black", 
+  distance = 0,
+  tooltipColor = "white",
+  tooltipBackgroundColor = "black"
+}: RulerProps) => {
+  const [_a, _b, x = 0, y = 0] = points;
+  const opacity = distance ? 0.75 : 0;
   return (
-    <Line 
-      stroke={stroke}
-      points={points}
-    />
+    <>
+      <Tooltip 
+        x={x}
+        y={y}
+        backgroundColor={tooltipBackgroundColor}
+        color={tooltipColor}
+        opacity={opacity} 
+        text={distance.toLocaleString()}
+      />
+      <Line 
+        stroke={stroke}
+        points={points}
+      />
+    </>
   );
 };
