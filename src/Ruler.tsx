@@ -26,7 +26,7 @@ export const useRuler = () => {
     if (e.evt.button !== 2) return;
 
     setMeasuring(true);
-    const { x, y }= e.target.getStage()?.getPointerPosition() ?? {x: 0, y: 0};
+    const { x, y }= e.target.getStage()?.getRelativePointerPosition() ?? {x: 0, y: 0};
     setPoints([x, y])
   };
 
@@ -40,7 +40,7 @@ export const useRuler = () => {
   const move = (e: Konva.KonvaEventObject<MouseEvent>) => {
     if (!measuring) return;
 
-    const { x, y } = e.target.getStage()?.getPointerPosition() ?? {x: 0, y: 0};
+    const { x, y } = e.target.getStage()?.getRelativePointerPosition() ?? {x: 0, y: 0};
     setPoints([
       ...points.slice(0, 2),
       x,
@@ -66,10 +66,14 @@ export const Ruler = ({
   tooltipColor = "white",
   tooltipBackgroundColor = "black"
 }: RulerProps) => {
-  const [_, __, x = 0, y = 0] = points;
+  const [, , x = 0, y = 0] = points;
   const opacity = distance ? 0.75 : 0;
   return (
     <>
+      <Line 
+        stroke={stroke}
+        points={points}
+      />
       <Tooltip 
         x={x}
         y={y}
@@ -77,10 +81,6 @@ export const Ruler = ({
         color={tooltipColor}
         opacity={opacity} 
         text={distance.toLocaleString()}
-      />
-      <Line 
-        stroke={stroke}
-        points={points}
       />
     </>
   );
