@@ -66,7 +66,7 @@ export const Ruler = ({
   tooltipColor = "white",
   tooltipBackgroundColor = "black"
 }: RulerProps) => {
-  const [_a, _b, x = 0, y = 0] = points;
+  const [_, __, x = 0, y = 0] = points;
   const opacity = distance ? 0.75 : 0;
   return (
     <>
