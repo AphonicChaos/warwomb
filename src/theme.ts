@@ -8,10 +8,8 @@ const config: ThemeConfig = {
 const styles = {
   global: {
     'html, body': {
-      margin: '10px',
-      marginBottom: 0,
-      height: 'calc(100vh - 20px)',
-      overflow: 'hidden'
+      margin: 0,
+      height: '100vh',
     },
     '#root': {
       height: '100%'
