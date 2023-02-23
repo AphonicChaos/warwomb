@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { ColorModeScript } from '@chakra-ui/react';
+import { theme } from './theme';
 import { App } from './App';
 
 const root = ReactDOM.createRoot(
@@ -7,6 +9,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <App />
   </React.StrictMode>
 );
