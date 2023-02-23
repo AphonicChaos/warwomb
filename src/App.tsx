@@ -1,8 +1,5 @@
 import { 
   Box,
-  Card,
-  CardBody,
-  CardHeader,
   ChakraProvider,
   Drawer,
   DrawerBody,
@@ -15,11 +12,12 @@ import {
   Spacer,
   useColorMode,
   useDisclosure,
-  useBoolean
 } from '@chakra-ui/react';
 import { Table } from './Table';
 import { theme } from './theme';
 import { SunIcon, MoonIcon, HamburgerIcon } from '@chakra-ui/icons';
+
+const rockyGroundUrl = 'https://www.myfreetextures.com/wp-content/uploads/2012/05/2011-06-11-09606.jpg';
 
 const Root = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -70,7 +68,7 @@ const Root = () => {
             </DrawerBody>
           </DrawerContent>
         </Drawer>
-        <Table width={800} height={600} />
+        <Table width={800} height={600} backgroundUrl={rockyGroundUrl} />
       </Box>
       <Spacer />
       {/* Hand */}
