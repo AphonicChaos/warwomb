@@ -11,16 +11,15 @@ import useImage from 'use-image';
 export type TableProps = {
   size?: number;
   backgroundUrl: string;
+  pixelsPerInch: number;
 };
 
 export const Table = ({ 
   size = window.innerHeight,
-  backgroundUrl
+  backgroundUrl,
+  pixelsPerInch
 }: TableProps) => {
-  console.log("size", size);
-  console.log('primary games are 48" x 48"');
-  console.log('skirmish games are 30" x 30"');
-  const ruler = useRuler();
+  const ruler = useRuler(pixelsPerInch);
   const [backgroundImage] = useImage(backgroundUrl);
 
   const handleContextMenu = (e: Konva.KonvaEventObject<MouseEvent>) => {

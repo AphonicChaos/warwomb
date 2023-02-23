@@ -1,4 +1,11 @@
 import { 
+  useState, 
+  useEffect, 
+  ChangeEvent, 
+  FocusEvent, 
+  LegacyRef
+} from 'react';
+import { 
   ChakraProvider,
   Flex,
   Grid,
@@ -20,6 +27,28 @@ const Root = () => {
     onClose: onToolboxClose
   } = useDisclosure();
   const [size, ref] = useMeasure(true);
+  const [gameType, setGameType] = useState('skirmish');
+  const [mapUrl, setMapUrl] = useState(rockyGroundUrl);
+  const [pixelsPerInch, setPixelsPerInch] = useState(0);
+
+  useEffect(() => {
+    if (size) {
+      setPixelsPerInch(
+        (size.height - 60) / (gameType === 'skirmish' ? 30 : 48)
+      );
+    }
+  }, [size, pixelsPerInch, gameType])
+
+  // primary games are 48" x 48"
+  // skirmish games are 30" x 30"
+
+  const handleMapUrlUpdated = (e: FocusEvent<HTMLInputElement>) => {
+    setMapUrl(e.target.value);
+  };
+
+  const handleGameTypeChanged = (e: ChangeEvent<HTMLSelectElement>) => {
+    setGameType(e.target.value);
+  };
 
   return (
     <Grid
@@ -33,11 +62,18 @@ const Root = () => {
       <GridItem area="header">
         <PageHeader onToolboxOpen={onToolboxOpen} />
       </GridItem>
-      {/* @ts-ignore */}
-      <GridItem area="main" ref={ref}>
-        <Toolbox isOpen={toolboxIsOpen} onClose={onToolboxClose} />
+      <GridItem area="main" ref={ref as LegacyRef<HTMLDivElement>}>
+        <Toolbox 
+          isOpen={toolboxIsOpen} 
+          onClose={onToolboxClose} 
+          mapUrl={mapUrl}
+          onMapUrlUpdated={handleMapUrlUpdated}
+          gameType={gameType}
+          onGameTypeChanged={handleGameTypeChanged}
+        />
         <Table 
-          backgroundUrl={rockyGroundUrl} 
+          backgroundUrl={mapUrl} 
+          pixelsPerInch={pixelsPerInch}
           size={size && size.height - 50} 
         />
       </GridItem>

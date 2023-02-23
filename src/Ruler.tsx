@@ -5,9 +5,10 @@ import {
 import Konva from 'konva';
 import { rounded } from './utils';
 import { Tooltip } from './Tooltip';
+import convert from 'convert-length';
 
 
-export const useRuler = () => {
+export const useRuler = (pixelsPerInch: number = 96) => {
   const [measuring, setMeasuring] = useState(false);
   const [points, setPoints] = useState<number[]>([]);
   const [distance, setDistance] = useState(0);
@@ -16,7 +17,19 @@ export const useRuler = () => {
     if (points.length === 4) {
       const [a, b, x, y] = points;
 
-      setDistance(Math.abs(rounded(Math.sqrt((x-a)**2 + (y-b)**2))));
+      setDistance(
+        rounded(
+          convert(
+            Math.abs(
+              Math.sqrt((x-a)**2 + (y-b)**2)
+            ),
+            'px',
+            'in', {
+              pixelsPerInch
+            }
+          )
+        )
+      );
     } else {
       setDistance(0);
     }
@@ -80,7 +93,7 @@ export const Ruler = ({
         backgroundColor={tooltipBackgroundColor}
         color={tooltipColor}
         opacity={opacity} 
-        text={distance.toLocaleString()}
+        text={distance.toLocaleString() + '"'}
       />
     </>
   );
