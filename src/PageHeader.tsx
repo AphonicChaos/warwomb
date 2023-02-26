@@ -16,21 +16,21 @@ export const PageHeader = ({
 }: PageHeaderProps) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Flex m="16px">
+    <Flex m={4}>
       <IconButton 
-      aria-label='Menu'
-      icon={<HamburgerIcon />}
-      onClick={onToolboxOpen}
+        aria-label='Menu'
+        icon={<HamburgerIcon />}
+        onClick={onToolboxOpen}
       />
       <Spacer />
       <IconButton 
-      aria-label='Color mode'
-      icon={
-      colorMode === 'dark'
-      ? <SunIcon />
-      : <MoonIcon />
-      }
-      onClick={toggleColorMode}
+        aria-label='Color mode'
+        icon={
+          colorMode === 'dark'
+          ? <SunIcon />
+          : <MoonIcon />
+        }
+        onClick={toggleColorMode}
       />
     </Flex>
   );

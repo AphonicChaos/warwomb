@@ -1,24 +1,29 @@
 import { ChangeEventHandler, FocusEventHandler } from 'react';
 import { 
+  Box,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
-  Stack,
-  Box,
   FormLabel,
   Input,
   Select,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  Stack,
 } from '@chakra-ui/react';
 
 export type ToolboxProps = {
   isOpen: boolean;
   onClose: () => void;
-  onMapUrlUpdated: FocusEventHandler 
+  onMapUrlUpdated: FocusEventHandler;
   gameType: string;
-  onGameTypeChanged: ChangeEventHandler
+  onGameTypeChanged: ChangeEventHandler;
+  onTableSizeChanged: any;
   mapUrl: string;
 };
 
@@ -29,6 +34,7 @@ export const Toolbox = ({
   gameType,
   onMapUrlUpdated,
   onGameTypeChanged,
+  onTableSizeChanged
 }: ToolboxProps) => {
   return (
     <Drawer
@@ -64,6 +70,15 @@ export const Toolbox = ({
                   <option value='skirmish'>Skirmish</option>
                   <option value='primary'>Primary</option>
                 </Select>
+              </Box>
+              <Box>
+                <FormLabel htmlFor='game-type'>Table Size</FormLabel>
+                <Slider defaultValue={600} min={500} max={800} step={100} onChange={onTableSizeChanged}>
+                  <SliderTrack>
+                    <SliderFilledTrack />
+                  </SliderTrack>
+                  <SliderThumb />
+                </Slider>
               </Box>
             </Stack>
         </DrawerBody>
