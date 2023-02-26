@@ -3,11 +3,9 @@ import {
   useEffect, 
   ChangeEvent, 
   FocusEvent, 
-  LegacyRef
 } from 'react';
 import { 
   ChakraProvider,
-  Flex,
   Grid,
   GridItem,
   useDisclosure,
@@ -15,10 +13,33 @@ import {
 import { Table } from './Table';
 import { theme } from './theme';
 import  { PageHeader } from './PageHeader';
+import { PageFooter } from './PageFooter';
 import { Toolbox } from './Toolbox';
-import { useMeasure } from '@react-hookz/web';
+import { Unit, UnitFaction, UnitType, BaseSize, SelectedUnit } from './types';
 
 const rockyGroundUrl = 'https://www.myfreetextures.com/wp-content/uploads/2012/05/2011-06-11-09606.jpg';
+
+const units: Unit[] = [
+  {
+    name: "Scourge",
+    faction: UnitFaction.AeternusContinuum,
+    type: UnitType.Warjack,
+    size: BaseSize.Large,
+  },
+  {
+    name: "Marauder",
+    faction: UnitFaction.AeternusContinuum,
+    type: UnitType.Solo,
+    size: BaseSize.Medium
+  },
+  {
+    name: "Talons",
+    faction: UnitFaction.AeternusContinuum,
+    type: UnitType.Squad,
+    size: BaseSize.Small,
+    models: 3
+  }
+];
 
 const Root = () => {
   const { 
@@ -26,17 +47,15 @@ const Root = () => {
     onOpen: onToolboxOpen,
     onClose: onToolboxClose
   } = useDisclosure();
-  const [size, ref] = useMeasure(true);
+  const [size, setSize] = useState(600);
   const [gameType, setGameType] = useState('skirmish');
   const [mapUrl, setMapUrl] = useState(rockyGroundUrl);
   const [pixelsPerInch, setPixelsPerInch] = useState(0);
 
   useEffect(() => {
-    if (size) {
-      setPixelsPerInch(
-        (size.height - 60) / (gameType === 'skirmish' ? 30 : 48)
-      );
-    }
+    setPixelsPerInch(
+      (size - 60) / (gameType === 'skirmish' ? 30 : 48)
+    );
   }, [size, pixelsPerInch, gameType])
 
   // primary games are 48" x 48"
@@ -50,6 +69,19 @@ const Root = () => {
     setGameType(e.target.value);
   };
 
+  const handleTableSizeChanged = (value: number) => {
+    setSize(value);
+  };
+
+  const [selectedUnit, setSelectedUnit] = useState<SelectedUnit>();
+
+  const handleUnitSelected = (unit: Unit, index: number) => {
+    setSelectedUnit({
+      ...unit,
+      index
+    });
+  };
+
   return (
     <Grid
       templateAreas={`"header"
@@ -57,12 +89,12 @@ const Root = () => {
                       "footer"`}
       gridTemplateRows={'50px 1fr 50px'}
       gridTemplateColumns={'1fr'}
-      h='100vh'
+      h='calc(100vh - 20px)'
     >
       <GridItem area="header">
         <PageHeader onToolboxOpen={onToolboxOpen} />
       </GridItem>
-      <GridItem area="main" ref={ref as LegacyRef<HTMLDivElement>}>
+      <GridItem area="main">
         <Toolbox 
           isOpen={toolboxIsOpen} 
           onClose={onToolboxClose} 
@@ -70,17 +102,18 @@ const Root = () => {
           onMapUrlUpdated={handleMapUrlUpdated}
           gameType={gameType}
           onGameTypeChanged={handleGameTypeChanged}
+          onTableSizeChanged={handleTableSizeChanged}
         />
         <Table 
           backgroundUrl={mapUrl} 
           pixelsPerInch={pixelsPerInch}
-          size={size && size.height - 50} 
+          size={size} 
+          selectedUnit={selectedUnit}
+          onUnitPlaced={() => setSelectedUnit(undefined)}
         />
       </GridItem>
       <GridItem area="footer">
-        <Flex justifyContent="center">
-          Hand goes here
-        </Flex>
+        <PageFooter onUnitSelected={handleUnitSelected} units={units} />
       </GridItem>
     </Grid>
   );

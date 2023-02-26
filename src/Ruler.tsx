@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { 
+  Group,
   Line,
 } from 'react-konva';
 import Konva from 'konva';
@@ -33,7 +34,7 @@ export const useRuler = (pixelsPerInch: number = 96) => {
     } else {
       setDistance(0);
     }
-  }, [points]);
+  }, [points, pixelsPerInch]);
 
   const down = (e: Konva.KonvaEventObject<MouseEvent>) => {
     if (e.evt.button !== 2) return;
@@ -82,7 +83,7 @@ export const Ruler = ({
   const [, , x = 0, y = 0] = points;
   const opacity = distance ? 0.75 : 0;
   return (
-    <>
+    <Group>
       <Line 
         stroke={stroke}
         points={points}
@@ -95,6 +96,6 @@ export const Ruler = ({
         opacity={opacity} 
         text={distance.toLocaleString() + '"'}
       />
-    </>
+    </Group>
   );
 };
