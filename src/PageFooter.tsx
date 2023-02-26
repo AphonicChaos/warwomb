@@ -1,4 +1,3 @@
-import { MouseEventHandler } from 'react';
 import { 
   Avatar,
   Box, 
@@ -11,13 +10,17 @@ import {
   MenuList
 } from '@chakra-ui/react';
 import { FaUsers } from 'react-icons/fa';
+import { Unit } from './types';
+import { bgList } from './utils';
 
 export type PageFooterProps = {
-  onUnitSelected: (unit: string) => void;
+  onUnitSelected: (unit: Unit, index: number) => void;
+  units: Unit[];
 };
 
 export const PageFooter = ({
-  onUnitSelected
+  onUnitSelected,
+  units = []
 }: PageFooterProps) => {
 
   return (
@@ -31,10 +34,10 @@ export const PageFooter = ({
           icon={<Icon as={FaUsers} />}
         />
         <MenuList>
-          {["Scourge", "Master Tulcan", "Talons"].map((unit: string, i: number) => (
-            <MenuItem key={i} onClick={() => onUnitSelected(unit)}>
-              <Avatar name={unit} mr={2} size="xs" />
-              <span>{unit}</span>
+          {units.map((unit: Unit, i: number) => (
+            <MenuItem key={unit.name} onClick={() => onUnitSelected(unit, i)}>
+              <Avatar name={unit.name} mr={2} size="xs" bg={bgList[i]} />
+              <span>{unit.name}</span>
             </MenuItem>
           ))}
         </MenuList>

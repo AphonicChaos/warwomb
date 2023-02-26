@@ -15,8 +15,31 @@ import { theme } from './theme';
 import  { PageHeader } from './PageHeader';
 import { PageFooter } from './PageFooter';
 import { Toolbox } from './Toolbox';
+import { Unit, UnitFaction, UnitType, BaseSize, SelectedUnit } from './types';
 
 const rockyGroundUrl = 'https://www.myfreetextures.com/wp-content/uploads/2012/05/2011-06-11-09606.jpg';
+
+const units: Unit[] = [
+  {
+    name: "Scourge",
+    faction: UnitFaction.AeternusContinuum,
+    type: UnitType.Warjack,
+    size: BaseSize.Large,
+  },
+  {
+    name: "Marauder",
+    faction: UnitFaction.AeternusContinuum,
+    type: UnitType.Solo,
+    size: BaseSize.Medium
+  },
+  {
+    name: "Talons",
+    faction: UnitFaction.AeternusContinuum,
+    type: UnitType.Squad,
+    size: BaseSize.Small,
+    models: 3
+  }
+];
 
 const Root = () => {
   const { 
@@ -50,8 +73,13 @@ const Root = () => {
     setSize(value);
   };
 
-  const handleUnitSelected = (unit: string) => {
-    alert(unit);
+  const [selectedUnit, setSelectedUnit] = useState<SelectedUnit>();
+
+  const handleUnitSelected = (unit: Unit, index: number) => {
+    setSelectedUnit({
+      ...unit,
+      index
+    });
   };
 
   return (
@@ -80,10 +108,12 @@ const Root = () => {
           backgroundUrl={mapUrl} 
           pixelsPerInch={pixelsPerInch}
           size={size} 
+          selectedUnit={selectedUnit}
+          onUnitPlaced={() => setSelectedUnit(undefined)}
         />
       </GridItem>
       <GridItem area="footer">
-        <PageFooter onUnitSelected={handleUnitSelected} />
+        <PageFooter onUnitSelected={handleUnitSelected} units={units} />
       </GridItem>
     </Grid>
   );
