@@ -7,13 +7,9 @@ const config: ThemeConfig = {
 
 const styles = {
   global: {
-    'html, body': {
+    'body': {
       margin: 0,
-      height: '100vh',
     },
-    '#root': {
-      height: '100%'
-    }
   }
 };
 
