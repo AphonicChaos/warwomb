@@ -1,8 +1,8 @@
-import { SelectedUnit, BaseSize } from './types';
-import { Avatar, chakra, shouldForwardProp } from '@chakra-ui/react';
+import { SelectedUnit } from './types';
+import { Avatar } from '@chakra-ui/react';
 import convert from 'convert-length';
 import { bgList } from './utils';
-import { motion, isValidMotionProp } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 type TableTokenProps = {
   unit: SelectedUnit,

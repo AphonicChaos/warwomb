@@ -1,7 +1,6 @@
 import { WheelEvent, useRef, useState } from 'react';
 import { useMouseHovered } from 'react-use';
 import { Flex, Box, chakra, shouldForwardProp } from '@chakra-ui/react';
-import { Ruler, useRuler } from './Ruler';
 import { TableToken } from './TableToken';
 import { PlacedUnit, SelectedUnit } from './types';
 
