@@ -89,6 +89,8 @@ const Root = () => {
                       "footer"`}
       gridTemplateRows={'50px 1fr 50px'}
       gridTemplateColumns={'1fr'}
+      boxSizing='border-box'
+      overflow='hidden'
       h='calc(100vh - 20px)'
     >
       <GridItem area="header">
