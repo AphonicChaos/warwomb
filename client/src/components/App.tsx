@@ -10,12 +10,12 @@ import {
   GridItem,
   useDisclosure,
 } from '@chakra-ui/react';
-import { Unit, UnitFaction, UnitType, BaseSize, SelectedUnit } from 'types';
-import { theme } from 'theme';
-import  { PageHeader } from 'components/PageHeader';
-import { PageFooter } from 'components/PageFooter';
-import { Table } from 'components/Table';
-import { Toolbox } from 'components/Toolbox';
+import { Unit, UnitFaction, UnitType, BaseSize, SelectedUnit } from '/types';
+import { theme } from '/theme';
+import  { PageHeader } from '/components/PageHeader';
+import { PageFooter } from '/components/PageFooter';
+import { Table } from '/components/Table';
+import { Toolbox } from '/components/Toolbox';
 
 
 const rockyGroundUrl = 'https://www.myfreetextures.com/wp-content/uploads/2012/05/2011-06-11-09606.jpg';

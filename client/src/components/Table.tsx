@@ -2,8 +2,8 @@ import { WheelEvent, useRef, useState } from 'react';
 import { useMouseHovered } from 'react-use';
 import { Flex, Box, chakra, shouldForwardProp } from '@chakra-ui/react';
 
-import { TableToken } from 'components/TableToken';
-import { PlacedUnit, SelectedUnit } from 'types';
+import { TableToken } from '/components/TableToken';
+import { PlacedUnit, SelectedUnit } from '/types';
 
 import { 
   motion,
