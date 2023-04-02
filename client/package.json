@@ -36,6 +36,9 @@
   },
   "scripts": {
     "start": "parcel",
+    "paths": {
+      "/*": ["./*"]
+    },
     "build": "parcel build",
     "test": "jest",
     "lint": "eslint"
