@@ -10,8 +10,8 @@ import {
   MenuList
 } from '@chakra-ui/react';
 import { FaUsers } from 'react-icons/fa';
-import { Unit } from '/types';
-import { bgList } from '/utils';
+import { Unit } from '/src/types';
+import { bgList } from '/src/utils';
 
 export type PageFooterProps = {
   onUnitSelected: (unit: Unit, index: number) => void;

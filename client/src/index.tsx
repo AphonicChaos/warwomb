@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ColorModeScript } from '@chakra-ui/react';
-import { theme } from '/theme';
-import { App } from '/components/App';
+import { theme } from '/src/theme';
+import { App } from '/src/components/App';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
