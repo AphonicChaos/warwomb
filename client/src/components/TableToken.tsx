@@ -1,8 +1,9 @@
-import { SelectedUnit } from './types';
 import { Avatar } from '@chakra-ui/react';
 import convert from 'convert-length';
-import { bgList } from './utils';
 import { motion } from 'framer-motion';
+
+import { SelectedUnit } from 'types';
+import { bgList } from 'utils';
 
 type TableTokenProps = {
   unit: SelectedUnit,

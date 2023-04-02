@@ -10,15 +10,13 @@ import {
   GridItem,
   useDisclosure,
 } from '@chakra-ui/react';
-import { Table } from './Table';
-import { theme } from './theme';
-import  { PageHeader } from './PageHeader';
-import { PageFooter } from './PageFooter';
-import { Toolbox } from './Toolbox';
-import { Unit, UnitFaction, UnitType, BaseSize, SelectedUnit } from './types';
-import useWebSocket from 'react-use-websocket';
+import { Unit, UnitFaction, UnitType, BaseSize, SelectedUnit } from 'types';
+import { theme } from 'theme';
+import  { PageHeader } from 'components/PageHeader';
+import { PageFooter } from 'components/PageFooter';
+import { Table } from 'components/Table';
+import { Toolbox } from 'components/Toolbox';
 
-const WS_URL = 'ws://localhost:8000/';
 
 const rockyGroundUrl = 'https://www.myfreetextures.com/wp-content/uploads/2012/05/2011-06-11-09606.jpg';
 
@@ -45,12 +43,6 @@ const units: Unit[] = [
 ];
 
 const Root = () => {
-  const { sendJsonMessage, lastMessage } = useWebSocket(WS_URL, {
-    onOpen: () => {
-      console.log("WebSocket connection established");
-    }
-  });
-
   const { 
     isOpen: toolboxIsOpen,
     onOpen: onToolboxOpen,
@@ -91,13 +83,6 @@ const Root = () => {
     });
   };
 
-  const handleWebSocket = () => {
-    lastMessage && console.log(lastMessage.data);
-    sendJsonMessage({
-      message: "HELLO"
-    });
-  };
-
   return (
     <Grid
       templateAreas={`"header"
@@ -110,7 +95,7 @@ const Root = () => {
       h='calc(100vh - 20px)'
     >
       <GridItem area="header">
-        <PageHeader onToolboxOpen={handleWebSocket} />
+        <PageHeader onToolboxOpen={onToolboxOpen} />
       </GridItem>
       <GridItem area="main">
         <Toolbox 
