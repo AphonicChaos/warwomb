@@ -2,17 +2,25 @@ import os
 import json
 
 from fastapi import FastAPI, WebSocket
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 
 app = FastAPI()
 
 
-@app.websocket("/")
+@app.websocket("/ws")
 async def websocket_root(websocket: WebSocket):
     await websocket.accept()
     while True:
         data = await websocket.receive_text()
         await websocket.send_text(json.dumps(data))
+
+
+app.mount(
+    "/",
+    StaticFiles(directory="static", html=True),
+    name="static"
+)
 
 
 def start():
