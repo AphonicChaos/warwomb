@@ -6,6 +6,7 @@ from fastapi.staticfiles import StaticFiles
 import uvicorn
 
 app = FastAPI()
+STATIC_DIR = os.path.abspath(f"{os.path.dirname(__file__)}../../static")
 
 
 @app.websocket("/ws")
@@ -18,7 +19,7 @@ async def websocket_root(websocket: WebSocket):
 
 app.mount(
     "/",
-    StaticFiles(directory="static", html=True),
+    StaticFiles(directory=STATIC_DIR, html=True),
     name="static"
 )
 
