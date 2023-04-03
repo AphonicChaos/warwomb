@@ -12,6 +12,8 @@ python = "^3.11"
 websockets = "^11.0"
 fastapi = "^0.95.0"
 uvicorn = {version = "^0.21.1", extras = ["standard"]}
+python-dotenv = "^1.0.0"
+authlib = "^1.2.0"
 
 [tool.poetry.scripts]
 start = "warwomb.main:start"
