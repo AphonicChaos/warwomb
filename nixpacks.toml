@@ -1,11 +1,11 @@
 providers = ["node", "python"]
 
 [phases.setup]
-nixPkgs = ["...", "yarn", "poetry"]
+nixPkgs = ["...", "yarn"]
 
 [phases.install]
 cmds = [
-  "cd server && poetry shell && poetry install",
+  "cd server && python -m venv /opt/venv && . /opt/venv/bin/activate && pip install -r requirements.txt",
   "cd client && yarn install"
 ]
 
@@ -13,4 +13,4 @@ cmds = [
 cmds = ["...", "cd client && yarn build"]
 
 [start]
-cmd = "cd server && poetry shell && poetry run start"
+cmd = ". /opt/venv/bin/activate && python -m warwomb.main"
