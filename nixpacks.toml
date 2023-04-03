@@ -13,4 +13,4 @@ cmds = [
 cmds = ["...", "cd client && yarn build"]
 
 [start]
-cmd = "cd server && python -m warwomb.main"
+cmd = "cd server && python warwomb/main.py"
