@@ -1,16 +1,7 @@
-providers = ["python", "node"]
+providers = ["python"]
 
 [phases.setup]
 nixPkgs = ["...", "yarn"]
 
-[phases.install]
-cmds = [
-  "cd server && pip install -r requirements.txt",
-  "cd client && yarn install"
-]
-
 [phases.build]
-cmds = ["...", "cd client && yarn build"]
-
-[start]
-cmd = "cd server && python -m warwomb.main"
+cmds = ["...", "yarn build"]

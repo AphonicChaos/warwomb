@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "parcel",
-    "build": "parcel build --dist-dir ../server/static/",
+    "build": "parcel build --dist-dir ./static/",
     "test": "jest",
     "lint": "eslint"
   },
