@@ -1,5 +1,8 @@
 providers = ["node", "python"]
 
+[phases.setup]
+nixPkgs = ["...", "yarn"]
+
 [phases.install]
 cmds = [
   "cd server && python -m venv /opt/venv && . /opt/venv/bin/activate && pip install -r requirements.txt",
