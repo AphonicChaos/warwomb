@@ -1,3 +1,4 @@
+import os
 import json
 
 from fastapi import FastAPI, WebSocket
@@ -15,4 +16,9 @@ async def websocket_root(websocket: WebSocket):
 
 
 def start():
-    uvicorn.run("warwomb.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(
+        "warwomb.main:app",
+        host="0.0.0.0",
+        port=os.getenv("PORT", 8000),
+        reload=os.getenv("DEBUG", 'True').lower() == 'true'
+    )
