@@ -22,3 +22,7 @@ def start():
         port=os.getenv("PORT", 8000),
         reload=os.getenv("DEBUG", 'True').lower() == 'true'
     )
+
+
+if __name__ == "__main__":
+    start()
