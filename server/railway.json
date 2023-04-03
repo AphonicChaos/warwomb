@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "poetry run start",
+    "startCommand": "python -m warwomb.main",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
