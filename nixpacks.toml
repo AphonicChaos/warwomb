@@ -1,0 +1,13 @@
+providers = ["node", "python"]
+
+[phases.install]
+cmds = [
+  "cd server && python -m venv /opt/venv && . /opt/venv/bin/activate && pip install -r requirements.txt",
+  "cd client && yarn install"
+]
+
+[phases.build]
+cmds = ["...", "cd client && yarn build"]
+
+[start]
+cmd = "python -m warwomb.main"
