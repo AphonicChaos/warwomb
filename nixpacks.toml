@@ -3,11 +3,5 @@ providers = ["python"]
 [phases.setup]
 nixPkgs = ["...", "yarn"]
 
-[phases.install]
-cmds = [
-  "..."
-  "yarn install"
-]
-
 [phases.build]
 cmds = ["...", "yarn build"]
