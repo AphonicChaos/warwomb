@@ -24,4 +24,4 @@ yarn-error.log*
 
 __pycache__
 .parcel-cache
-static/*
+server/static/*
