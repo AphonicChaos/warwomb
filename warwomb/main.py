@@ -3,6 +3,7 @@ import json
 
 from fastapi import FastAPI, WebSocket
 from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from sqladmin import Admin, ModelView
 import uvicorn
 
@@ -38,7 +39,9 @@ def start():
         "warwomb.main:app",
         host="0.0.0.0",
         port=os.getenv("PORT", 8000),
-        reload=os.getenv("DEBUG", 'True').lower() == 'true'
+        reload=os.getenv("DEBUG", 'True').lower() == 'true',
+        forwarded_allow_ips="*",
+        proxy_headers=True
     )
 
 
