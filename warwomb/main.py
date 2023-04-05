@@ -3,10 +3,19 @@ import json
 
 from fastapi import FastAPI, WebSocket
 from fastapi.staticfiles import StaticFiles
+from sqladmin import Admin, ModelView
 import uvicorn
 
-app = FastAPI()
+from .database import engine
+from .admin import UnitAdmin, authentication_backend
+
 STATIC_DIR = os.path.abspath(f"{os.path.dirname(__file__)}../../static")
+
+app = FastAPI()
+admin = Admin(app, engine, authentication_backend=authentication_backend)
+
+
+admin.add_view(UnitAdmin)
 
 
 @app.websocket("/ws")
