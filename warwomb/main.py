@@ -109,11 +109,11 @@ async def auth(request: Request):
     return user.dict()
 
 
-app.mount(
-    "/",
-    StaticFiles(directory=STATIC_DIR, html=True),
-    name="static"
-)
+# app.mount(
+#     "/",
+#     StaticFiles(directory=STATIC_DIR, html=True),
+#     name="static"
+# )
 
 
 def start():
