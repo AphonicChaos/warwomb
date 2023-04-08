@@ -1,6 +1,6 @@
 import useWebSocket from 'react-use-websocket';
 
-const HOST: string = 'ws://localhost:8000/';
+const HOST: string = 'ws://localhost:8000/ws/';
 
 export type IUseApi = {
   echo: (message: string) => void;
