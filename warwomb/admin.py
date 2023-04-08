@@ -2,15 +2,68 @@ import os
 from typing import Optional
 
 from dotenv import main
+from wtforms import fields
 from sqladmin import ModelView
 from sqladmin.authentication import AuthenticationBackend
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
 
-from .models import Unit
+from .models import (
+    Unit,
+    UnitType,
+    Faction,
+    Advantage,
+    Weapon,
+    WeaponEnergyType,
+    WeaponQuality,
+    WeaponType
+)
 
 
 main.load_dotenv()
+
+
+class BaseModelView(ModelView):
+    column_exclude_list = ["id"]
+
+
+class UnitAdmin(BaseModelView, model=Unit):
+    pass
+
+
+class UnitTypeAdmin(BaseModelView, model=UnitType):
+    form_excluded_columns = [UnitType.unit]
+
+
+class FactionAdmin(BaseModelView, model=Faction):
+    form_excluded_columns = [Faction.units]
+
+
+class AdvantageAdmin(BaseModelView, model=Advantage):
+    form_excluded_columns = [Advantage.units]
+
+
+class WeaponAdmin(BaseModelView, model=Weapon):
+    form_excluded_columns = [Weapon.units]
+
+
+class WeaponEnergyTypeAdmin(BaseModelView, model=WeaponEnergyType):
+    column_exclude_list = BaseModelView.column_exclude_list + [
+        WeaponEnergyType.weapons
+    ]
+    form_excluded_columns = [WeaponEnergyType.weapons]
+
+
+class WeaponQualityAdmin(BaseModelView, model=WeaponQuality):
+    name_plural = "Weapon Qualities"
+    form_excluded_columns = [WeaponQuality.weapon]
+    form_overrides = {
+        "description": fields.TextAreaField
+    }
+
+
+class WeaponTypeAdmin(BaseModelView, model=WeaponType):
+    form_excluded_columns = [WeaponType.weapon]
 
 
 class AdminAuth(AuthenticationBackend):
@@ -46,21 +99,6 @@ class AdminAuth(AuthenticationBackend):
             return RedirectResponse(
                 request.url_for("admin:login"), status_code=302
             )
-
-
-class UnitAdmin(ModelView, model=Unit):
-    column_list = [
-        Unit.name,
-        Unit.speed,
-        Unit.strength,
-        Unit.melee_attack,
-        Unit.ranged_attack,
-        Unit.defense,
-        Unit.armor,
-        Unit.focus,
-        Unit.health,
-        Unit.deployment_cost
-    ]
 
 
 authentication_backend = AdminAuth(secret_key="...")

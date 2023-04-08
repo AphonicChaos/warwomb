@@ -8,7 +8,17 @@ from sqladmin import Admin, ModelView
 import uvicorn
 
 from .database import engine
-from .admin import UnitAdmin, authentication_backend
+from .admin import (
+    UnitAdmin,
+    UnitTypeAdmin,
+    FactionAdmin,
+    AdvantageAdmin,
+    WeaponAdmin,
+    WeaponEnergyTypeAdmin,
+    WeaponQualityAdmin,
+    WeaponTypeAdmin,
+    authentication_backend
+)
 
 STATIC_DIR = os.path.abspath(f"{os.path.dirname(__file__)}../../static")
 
@@ -17,6 +27,13 @@ admin = Admin(app, engine, authentication_backend=authentication_backend)
 
 
 admin.add_view(UnitAdmin)
+admin.add_view(UnitTypeAdmin)
+admin.add_view(FactionAdmin)
+admin.add_view(AdvantageAdmin)
+admin.add_view(WeaponAdmin)
+admin.add_view(WeaponEnergyTypeAdmin)
+admin.add_view(WeaponQualityAdmin)
+admin.add_view(WeaponTypeAdmin)
 
 
 @app.websocket("/ws")
