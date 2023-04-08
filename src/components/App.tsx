@@ -16,6 +16,7 @@ import  { PageHeader } from './PageHeader';
 import { PageFooter } from './PageFooter';
 import { Table } from './Table';
 import { Toolbox } from './Toolbox';
+import { useApi } from '/src/api';
 
 
 const rockyGroundUrl = 'https://www.myfreetextures.com/wp-content/uploads/2012/05/2011-06-11-09606.jpg';
@@ -52,6 +53,11 @@ const Root = () => {
   const [gameType, setGameType] = useState('skirmish');
   const [mapUrl, setMapUrl] = useState(rockyGroundUrl);
   const [pixelsPerInch, setPixelsPerInch] = useState(0);
+  const { echo }= useApi();
+
+  const handleSocket = () => {
+      echo("HI");
+  }
 
   useEffect(() => {
     setPixelsPerInch(
@@ -95,7 +101,7 @@ const Root = () => {
       h='calc(100vh - 20px)'
     >
       <GridItem area="header">
-        <PageHeader onToolboxOpen={onToolboxOpen} />
+        <PageHeader onToolboxOpen={handleSocket} />
       </GridItem>
       <GridItem area="main">
         <Toolbox 

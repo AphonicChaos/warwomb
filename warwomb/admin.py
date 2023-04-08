@@ -8,7 +8,7 @@ from sqladmin.authentication import AuthenticationBackend
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
 
-from .models import (
+from warwomb.models import (
     Role,
     User,
     Advantage,
