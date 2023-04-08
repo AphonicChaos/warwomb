@@ -7,12 +7,16 @@ from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 from starlette.responses import RedirectResponse
 from sqladmin import Admin
+from sqlmodel import Session, select
 import uvicorn
 
 
 from .auth import oauth
 from .database import engine
+from .models import User, Role
 from .admin import (
+    UserAdmin,
+    RoleAdmin,
     UnitAdmin,
     UnitTypeAdmin,
     FactionAdmin,
@@ -21,7 +25,6 @@ from .admin import (
     WeaponEnergyTypeAdmin,
     WeaponQualityAdmin,
     WeaponTypeAdmin,
-    authentication_backend
 )
 
 main.load_dotenv()
@@ -30,7 +33,7 @@ STATIC_DIR = os.path.abspath(f"{os.path.dirname(__file__)}../../static")
 
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key=os.getenv("APP_SECRET_KEY"))
-admin = Admin(app, engine, authentication_backend=authentication_backend)
+admin = Admin(app, engine)
 
 
 admin.add_view(UnitAdmin)
@@ -41,6 +44,8 @@ admin.add_view(WeaponAdmin)
 admin.add_view(WeaponEnergyTypeAdmin)
 admin.add_view(WeaponQualityAdmin)
 admin.add_view(WeaponTypeAdmin)
+admin.add_view(UserAdmin)
+admin.add_view(RoleAdmin)
 
 
 @app.websocket("/ws")
@@ -67,11 +72,28 @@ async def logout(request: Request):
 @app.get("/auth")
 async def auth(request: Request):
     token = await oauth.google.authorize_access_token(request)
-    user = token.get("userinfo")
-    if user:
-        request.session["user"] = dict(user)
+    user_info = token.get("userinfo")
+    user = {}
 
-    return user
+    if user_info:
+        with Session(engine) as session:
+            normal_role = session.exec(
+                select(Role).where(Role.name == "normal")
+            ).first()
+            statement = select(User).where(
+                User.email == user_info.email
+            )
+            user = session.exec(statement).first()
+
+            if not user:
+                user = User(email=user_info.email, role=normal_role)
+                session.add(user)
+                session.commit()
+                session.refresh(user)
+
+    request.session["user"] = user.dict()
+
+    return user.dict()
 
 
 app.mount(

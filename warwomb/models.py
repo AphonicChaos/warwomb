@@ -1,10 +1,17 @@
+from enum import StrEnum, auto
 from typing import List, Optional
 
 from sqlmodel import (
+    Column,
+    Enum,
     Field,
     Relationship,
-    SQLModel
+    SQLModel,
 )
+
+
+class AuthProvider(StrEnum):
+    Google = auto()
 
 
 class UnitFactionLink(SQLModel, table=True):
@@ -18,7 +25,7 @@ class UnitFactionLink(SQLModel, table=True):
 
 
 class UnitAdvantageLink(SQLModel, table=True):
-    __tablename__ = "unit_advantage_link"
+    __tablename__ = "unit_advantage_links"
 
     unit_id: Optional[int] = Field(foreign_key="units.id", primary_key=True)
     unit_advantange_id: Optional[int] = Field(
@@ -28,7 +35,7 @@ class UnitAdvantageLink(SQLModel, table=True):
 
 
 class UnitWeaponLink(SQLModel, table=True):
-    __tablename__ = "unit_weapon_link"
+    __tablename__ = "unit_weapon_links"
 
     unit_id: Optional[int] = Field(foreign_key="units.id", primary_key=True)
     unit_weapon_id: Optional[int] = Field(
@@ -38,7 +45,7 @@ class UnitWeaponLink(SQLModel, table=True):
 
 
 class WeaponEnergyTypeLink(SQLModel, table=True):
-    __tablename__ = "weapon_energy_type_link"
+    __tablename__ = "weapon_energy_type_links"
 
     weapon_id: Optional[int] = Field(
         foreign_key="unit_weapons.id", primary_key=True
@@ -233,6 +240,31 @@ class WeaponType(SQLModel, table=True):
     name: str = Field(unique=True)
 
     weapon: "Weapon" = Relationship(back_populates="type")
+
+    def __str__(self) -> str:
+        return self.name
+
+
+class User(SQLModel, table=True):
+    ___tablename__ = "users"
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    email: str = Field(unique=True)
+    auth_provider: AuthProvider = Field(sa_column=Column(Enum(AuthProvider)))
+    role_id: Optional[int] = Field(foreign_key="roles.id")
+
+    role: "Role" = Relationship(back_populates="user")
+
+    def __str__(self) -> str:
+        return self.email
+
+
+class Role(SQLModel, table=True):
+    __tablename__ = "roles"
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str = Field(unique=True)
+
+    user: "User" = Relationship(back_populates="role")
 
     def __str__(self) -> str:
         return self.name
