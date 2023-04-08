@@ -2,6 +2,7 @@ import os
 import json
 from dotenv import main
 
+import httpx
 from fastapi import FastAPI, Request, WebSocket
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
@@ -13,7 +14,7 @@ import uvicorn
 
 from .auth import oauth
 from .database import engine
-from .models import User, Role
+from .models import AuthProvider, User, Role
 from .admin import (
     UserAdmin,
     RoleAdmin,
@@ -66,6 +67,13 @@ async def login(request: Request):
 @app.get("/logout")
 async def logout(request: Request):
     request.session.pop("user", None)
+    access_token = request.session.pop("access_token", None)
+
+    if access_token:
+        httpx.post("https://accounts.google.com/o/oauth2/revoke", data={
+            "token": access_token
+        })
+
     return RedirectResponse(url="/")
 
 
@@ -86,12 +94,17 @@ async def auth(request: Request):
             user = session.exec(statement).first()
 
             if not user:
-                user = User(email=user_info.email, role=normal_role)
+                user = User(
+                    email=user_info.email,
+                    role=normal_role,
+                    auth_provider=AuthProvider.Google
+                )
                 session.add(user)
                 session.commit()
                 session.refresh(user)
 
-    request.session["user"] = user.dict()
+        request.session["user"] = user.dict()
+        request.session["access_token"] = token["access_token"]
 
     return user.dict()
 

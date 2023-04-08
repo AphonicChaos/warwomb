@@ -492,7 +492,7 @@ email = ["email-validator"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "e6211048096d3e7bdd7559a621f380acf7353f3776c2e9cac6a2e3465918cb52"
+content-hash = "54ff8c209157319308ba7dbcebb199437aa93295b25e46fa3c2203c89e369f21"
 
 [metadata.files]
 alembic = [
