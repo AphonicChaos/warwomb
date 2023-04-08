@@ -1,12 +1,16 @@
 import os
 import json
+from dotenv import main
 
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI, Request, WebSocket
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
-from sqladmin import Admin, ModelView
+from starlette.middleware.sessions import SessionMiddleware
+from starlette.responses import RedirectResponse
+from sqladmin import Admin
 import uvicorn
 
+
+from .auth import oauth
 from .database import engine
 from .admin import (
     UnitAdmin,
@@ -20,9 +24,12 @@ from .admin import (
     authentication_backend
 )
 
+main.load_dotenv()
+
 STATIC_DIR = os.path.abspath(f"{os.path.dirname(__file__)}../../static")
 
 app = FastAPI()
+app.add_middleware(SessionMiddleware, secret_key=os.getenv("APP_SECRET_KEY"))
 admin = Admin(app, engine, authentication_backend=authentication_backend)
 
 
@@ -42,6 +49,29 @@ async def websocket_root(websocket: WebSocket):
     while True:
         data = await websocket.receive_text()
         await websocket.send_text(json.dumps(data))
+
+
+@app.get("/login")
+async def login(request: Request):
+    redirect_uri = request.url_for("auth")
+
+    return await oauth.google.authorize_redirect(request, str(redirect_uri))
+
+
+@app.get("/logout")
+async def logout(request: Request):
+    request.session.pop("user", None)
+    return RedirectResponse(url="/")
+
+
+@app.get("/auth")
+async def auth(request: Request):
+    token = await oauth.google.authorize_access_token(request)
+    user = token.get("userinfo")
+    if user:
+        request.session["user"] = dict(user)
+
+    return user
 
 
 app.mount(
