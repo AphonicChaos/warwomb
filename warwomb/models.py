@@ -37,11 +37,23 @@ class UnitWeaponLink(SQLModel, table=True):
     )
 
 
+class WeaponEnergyTypeLink(SQLModel, table=True):
+    __tablename__ = "weapon_energy_type_link"
+
+    weapon_id: Optional[int] = Field(
+        foreign_key="unit_weapons.id", primary_key=True
+    )
+    energy_type_id: Optional[int] = Field(
+        foreign_key="weapon_energy_types.id",
+        primary_key=True
+    )
+
+
 class Unit(SQLModel, table=True):
     __tablename__ = "units"
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str
+    name: str = Field(unique=True)
     speed: Optional[int] = Field(default=None)
     strength: Optional[int] = Field(default=None)
     melee_attack: int
@@ -65,6 +77,9 @@ class Unit(SQLModel, table=True):
         back_populates="units",
         link_model=UnitWeaponLink
     )
+
+    def __str__(self) -> str:
+        return self.name
 
     @property
     def spd(self) -> int:
@@ -119,78 +134,105 @@ class UnitType(SQLModel, table=True):
     __tablename__ = "unit_types"
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str
+    name: str = Field(unique=True)
     unit_id: Optional[int] = Field(foreign_key="units.id")
 
     unit: "Unit" = Relationship(back_populates="types")
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class Faction(SQLModel, table=True):
     __tablename__ = "unit_factions"
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str
+    name: str = Field(unique=True)
 
     units: List["Unit"] = Relationship(
         back_populates="factions",
         link_model=UnitFactionLink
     )
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Advantage(SQLModel, table=True):
     __tablename__ = "unit_advantages"
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str
+    name: str = Field(unique=True)
 
     units: List["Unit"] = Relationship(
         back_populates="advantages",
         link_model=UnitAdvantageLink
     )
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Weapon(SQLModel, table=True):
     __tablename__ = "unit_weapons"
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str
+    name: str = Field(unique=True)
     range: int
     power: int
     type_id: Optional[int] = Field(foreign_key="weapon_types.id")
     quality_id: Optional[int] = Field(foreign_key="weapon_qualities.id")
-    energy_type_id: Optional[int] = Field(foreign_key="weapon_energy_types.id")
 
     type: "WeaponType" = Relationship(back_populates="weapon")
-    energy_type: "WeaponEnergyType" = Relationship(back_populates="weapon")
     quality: "WeaponQuality" = Relationship(back_populates="weapon")
+    energy_types: List["WeaponEnergyType"] = Relationship(
+        back_populates="weapons",
+        link_model=WeaponEnergyTypeLink
+    )
     units: List["Unit"] = Relationship(
         back_populates="weapons",
         link_model=UnitWeaponLink
     )
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class WeaponEnergyType(SQLModel, table=True):
     __tablename__ = "weapon_energy_types"
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str
+    name: str = Field(unique=True)
 
-    weapon: "Weapon" = Relationship(back_populates="energy_type")
+    weapons: List["Weapon"] = Relationship(
+        back_populates="energy_types",
+        link_model=WeaponEnergyTypeLink
+    )
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class WeaponQuality(SQLModel, table=True):
     __tablename__ = "weapon_qualities"
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str
+    name: str = Field(unique=True)
+    description: str
 
     weapon: "Weapon" = Relationship(back_populates="quality")
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class WeaponType(SQLModel, table=True):
     __tablename__ = "weapon_types"
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str
+    name: str = Field(unique=True)
 
     weapon: "Weapon" = Relationship(back_populates="type")
+
+    def __str__(self) -> str:
+        return self.name
