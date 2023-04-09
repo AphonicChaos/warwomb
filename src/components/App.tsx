@@ -5,13 +5,12 @@ import {
   FocusEvent, 
 } from 'react';
 import { 
-  Button,
   ChakraProvider,
   Grid,
   GridItem,
   useDisclosure,
 } from '@chakra-ui/react';
-import { Auth0Provider, useAuth0 } from "@auth0/auth0-react";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 
 import { Unit, UnitFaction, UnitType, BaseSize, SelectedUnit } from '/src/types';
@@ -20,7 +19,6 @@ import  { PageHeader } from './PageHeader';
 import { PageFooter } from './PageFooter';
 import { Table } from './Table';
 import { Toolbox } from './Toolbox';
-import { useApi } from '/src/api';
 
 
 const rockyGroundUrl = 'https://www.myfreetextures.com/wp-content/uploads/2012/05/2011-06-11-09606.jpg';
@@ -48,8 +46,6 @@ const units: Unit[] = [
 ];
 
 const Root = () => {
-  const { logout, loginWithRedirect, isAuthenticated } = useAuth0();
-
   const { 
     isOpen: toolboxIsOpen,
     onOpen: onToolboxOpen,
@@ -59,11 +55,6 @@ const Root = () => {
   const [gameType, setGameType] = useState('skirmish');
   const [mapUrl, setMapUrl] = useState(rockyGroundUrl);
   const [pixelsPerInch, setPixelsPerInch] = useState(0);
-  const { echo }= useApi();
-
-  const handleSocket = () => {
-      echo("HI");
-  }
 
   useEffect(() => {
     setPixelsPerInch(

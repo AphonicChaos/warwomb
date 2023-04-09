@@ -33,6 +33,6 @@ async def websocket_root(websocket: WebSocket):
     try:
         while True:
             message = await websocket.receive_text()
-            manager.send(message, websocket)
+            await manager.send(message, websocket)
     except WebSocketDisconnect:
         manager.disconnect(websocket)
