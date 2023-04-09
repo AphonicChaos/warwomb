@@ -6,7 +6,9 @@ from wtforms import fields
 from sqladmin import ModelView
 from sqladmin.authentication import AuthenticationBackend
 from starlette.requests import Request
-from starlette.responses import RedirectResponse
+from fastapi.responses import RedirectResponse
+from .auth.dependencies import validate_token
+from warwomb.auth.authorization_header_elements import get_bearer_token
 
 from warwomb.models import (
     Role,
@@ -80,6 +82,21 @@ class WeaponQualityAdmin(BaseModelView, model=WeaponQuality):
 
 class WeaponTypeAdmin(BaseModelView, model=WeaponType):
     form_excluded_columns = [WeaponType.weapon]
+
+
+class AdminAuth0(AuthenticationBackend):
+    async def login(self) -> bool:
+        pass
+
+    async def logout(self) -> bool:
+        pass
+
+    async def authenticate(
+        self,
+        request: Request
+    ) -> Optional[RedirectResponse]:
+        bearer_token = get_bearer_token(request)
+        validate_token(bearer_token)
 
 
 class AdminAuth(AuthenticationBackend):
