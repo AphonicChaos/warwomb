@@ -80,3 +80,41 @@ class WeaponQualityAdmin(BaseModelView, model=WeaponQuality):
 
 class WeaponTypeAdmin(BaseModelView, model=WeaponType):
     form_excluded_columns = [WeaponType.weapon]
+
+
+class AdminAuth(AuthenticationBackend):
+    async def login(self, request: Request) -> bool:
+        form = await request.form()
+        username = form["username"]
+        password = form["password"]
+
+        request.session.update({
+            "username": username,
+            "password": password
+        })
+
+        return True
+
+    async def logout(self, request: Request) -> bool:
+        request.session.clear()
+        return False
+
+    async def authenticate(
+        self,
+        request: Request
+    ) -> Optional[RedirectResponse]:
+        username = request.session.get("username")
+        password = request.session.get("password")
+
+        if not all([
+            username,
+            password,
+            username == os.getenv("ADMIN_USER"),
+            password == os.getenv("ADMIN_PASS")
+        ]):
+            return RedirectResponse(
+                request.url_for("admin:login"), status_code=302
+            )
+
+
+authentication_backend = AdminAuth(secret_key=os.getenv("APP_SECRET_KEY"))

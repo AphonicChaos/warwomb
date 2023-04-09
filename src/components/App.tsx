@@ -10,13 +10,15 @@ import {
   GridItem,
   useDisclosure,
 } from '@chakra-ui/react';
-import { Unit, UnitFaction, UnitType, BaseSize, SelectedUnit } from '/src//types';
+import { Auth0Provider } from "@auth0/auth0-react";
+
+
+import { Unit, UnitFaction, UnitType, BaseSize, SelectedUnit } from '/src/types';
 import { theme } from '/src/theme';
 import  { PageHeader } from './PageHeader';
 import { PageFooter } from './PageFooter';
 import { Table } from './Table';
 import { Toolbox } from './Toolbox';
-import { useApi } from '/src/api';
 
 
 const rockyGroundUrl = 'https://www.myfreetextures.com/wp-content/uploads/2012/05/2011-06-11-09606.jpg';
@@ -53,11 +55,6 @@ const Root = () => {
   const [gameType, setGameType] = useState('skirmish');
   const [mapUrl, setMapUrl] = useState(rockyGroundUrl);
   const [pixelsPerInch, setPixelsPerInch] = useState(0);
-  const { echo }= useApi();
-
-  const handleSocket = () => {
-      echo("HI");
-  }
 
   useEffect(() => {
     setPixelsPerInch(
@@ -101,7 +98,7 @@ const Root = () => {
       h='calc(100vh - 20px)'
     >
       <GridItem area="header">
-        <PageHeader onToolboxOpen={handleSocket} />
+        <PageHeader onToolboxOpen={onToolboxOpen} />
       </GridItem>
       <GridItem area="main">
         <Toolbox 
@@ -130,8 +127,16 @@ const Root = () => {
 
 export const App = () => {
   return (
-    <ChakraProvider theme={theme}>
-      <Root />
-    </ChakraProvider>
+    <Auth0Provider
+    domain={process.env.AUTH0_DOMAIN || ""}
+    clientId={process.env.AUTH0_CLIENT_ID || ""}
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+    > 
+      <ChakraProvider theme={theme}>
+        <Root />
+      </ChakraProvider>
+    </Auth0Provider>
   );
 };
