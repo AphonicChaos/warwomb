@@ -15,10 +15,25 @@ though there are a few traditional HTTP endpoints.
 - TypeScript
 - React
 
+#### Files
+.
+├── static - where client code is output during deployments
+└── warwomb-client-old - old client code
+
 ### Backend
 - Python
 - FastAPI
 - Auth0
+
+#### Files
+.
+├── alembic.ini - migration configuration
+├── migration - database migrations
+├── poetry.lock - versioned dependencies
+├── pyproject.toml - package configuration
+├── requirements.txt - versioned dependencies for deployment
+├── static - static assets
+├── warwomb - server source code
 
 ## Building
 If you'd like to run both the client and server with hot-reload enabled, run
