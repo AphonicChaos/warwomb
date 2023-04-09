@@ -128,17 +128,6 @@ doc = ["mdx-include (>=1.4.1,<2.0.0)", "mkdocs (>=1.1.2,<2.0.0)", "mkdocs-markdo
 test = ["anyio[trio] (>=3.2.1,<4.0.0)", "black (==23.1.0)", "coverage[toml] (>=6.5.0,<8.0)", "databases[sqlite] (>=0.3.2,<0.7.0)", "email-validator (>=1.1.1,<2.0.0)", "flask (>=1.1.2,<3.0.0)", "httpx (>=0.23.0,<0.24.0)", "isort (>=5.0.6,<6.0.0)", "mypy (==0.982)", "orjson (>=3.2.1,<4.0.0)", "passlib[bcrypt] (>=1.7.2,<2.0.0)", "peewee (>=3.13.3,<4.0.0)", "pytest (>=7.1.3,<8.0.0)", "python-jose[cryptography] (>=3.3.0,<4.0.0)", "python-multipart (>=0.0.5,<0.0.7)", "pyyaml (>=5.3.1,<7.0.0)", "ruff (==0.0.138)", "sqlalchemy (>=1.3.18,<1.4.43)", "types-orjson (==3.6.2)", "types-ujson (==5.7.0.1)", "ujson (>=4.0.1,!=4.0.2,!=4.1.0,!=4.2.0,!=4.3.0,!=5.0.0,!=5.1.0,<6.0.0)"]
 
 [[package]]
-name = "fastapi-crudrouter"
-version = "0.8.6"
-description = "A dynamic FastAPI router that automatically creates CRUD routes for your models"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-fastapi = "*"
-
-[[package]]
 name = "greenlet"
 version = "2.0.2"
 description = "Lightweight in-process concurrent programming"
@@ -595,7 +584,7 @@ email = ["email-validator"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "85cdc45681aa2ae7408b6efb7e8db7599226a3068e2d0d0f033e08759fb40121"
+content-hash = "b3238b7150e9bd7f870ccd5c496c8ba2acb8ff34bd339da6fbcb5e17cdc2df69"
 
 [metadata.files]
 alembic = [
@@ -716,10 +705,6 @@ cryptography = [
 fastapi = [
     {file = "fastapi-0.95.0-py3-none-any.whl", hash = "sha256:daf73bbe844180200be7966f68e8ec9fd8be57079dff1bacb366db32729e6eb5"},
     {file = "fastapi-0.95.0.tar.gz", hash = "sha256:99d4fdb10e9dd9a24027ac1d0bd4b56702652056ca17a6c8721eec4ad2f14e18"},
-]
-fastapi-crudrouter = [
-    {file = "fastapi-crudrouter-0.8.6.tar.gz", hash = "sha256:32704a7aa1d0b23bb6437f717599e9c4c01d8e5a91370a0359837a899a809ceb"},
-    {file = "fastapi_crudrouter-0.8.6-py3-none-any.whl", hash = "sha256:4ceb0289cd7b7c687f88581838c032cdb21f24d36971e54b0e594ddcfaf9634e"},
 ]
 greenlet = [
     {file = "greenlet-2.0.2-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:bdfea8c661e80d3c1c99ad7c3ff74e6e87184895bbaca6ee8cc61209f8b9b85d"},

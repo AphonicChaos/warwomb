@@ -14,7 +14,7 @@ import uvicorn
 
 from .auth.dependencies import PermissionsValidator, validate_token
 from .database import engine
-from .routes import websockets, crud
+from .routes import websockets
 from .admin import (
     UserAdmin,
     RoleAdmin,
@@ -49,7 +49,6 @@ admin.add_view(UserAdmin)
 admin.add_view(RoleAdmin)
 
 app.include_router(websockets.router)
-app.include_router(crud.users)
 
 
 STATIC_DIR = os.path.abspath(f"{os.path.dirname(__file__)}../../static")
