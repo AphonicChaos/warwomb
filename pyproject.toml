@@ -20,10 +20,14 @@ psycopg2 = "^2.9.6"
 sqladmin = "^0.10.1"
 httpx = "^0.23.3"
 secure = "^0.3.0"
+fastapi-crudrouter = "^0.8.6"
 
 [tool.poetry.scripts]
 start = "warwomb.main:start"
 
+
+[tool.poetry.group.dev.dependencies]
+ptpython = "^3.0.23"
 
 [build-system]
 requires = ["poetry-core"]

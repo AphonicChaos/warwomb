@@ -14,7 +14,7 @@ import uvicorn
 
 from .auth.dependencies import PermissionsValidator, validate_token
 from .database import engine
-from .routes import websockets
+from .routes import websockets, crud
 from .admin import (
     UserAdmin,
     RoleAdmin,
@@ -26,13 +26,14 @@ from .admin import (
     WeaponEnergyTypeAdmin,
     WeaponQualityAdmin,
     WeaponTypeAdmin,
+    authentication_backend
 )
 
 main.load_dotenv()
 
 
 app = FastAPI()
-admin = Admin(app, engine)
+admin = Admin(app, engine, authentication_backend=authentication_backend)
 
 app.add_middleware(SessionMiddleware, secret_key=os.getenv("APP_SECRET_KEY"))
 
@@ -48,6 +49,7 @@ admin.add_view(UserAdmin)
 admin.add_view(RoleAdmin)
 
 app.include_router(websockets.router)
+app.include_router(crud.users)
 
 
 STATIC_DIR = os.path.abspath(f"{os.path.dirname(__file__)}../../static")
