@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "client",
+    "paths": {
+      "/*": ["./*"]
+    },
+    "jsx": "react-jsx",
+    "isolateModules": true
+  }
+}
