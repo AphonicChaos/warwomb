@@ -1,0 +1,643 @@
+[
+    {
+        "factions": ["AC", "EMP", "MW", "ISA"],
+        "type": "SOLO",
+        "name": "Axel for Hire",
+        "dc": 1,
+        "hero": true,
+        "qualities": ["WILD_CARD"]
+    },
+    {
+        "factions": ["AC", "EMP", "MW", "ISA"],
+        "type": "SOLO",
+        "name": "Fenrik Leech, Free Agent",
+        "dc": 1,
+        "hero": true
+    },
+    {
+        "factions": ["AC", "EMP", "MW", "ISA"],
+        "type": "SOLO",
+        "name": "Master Tulcan",
+        "dc": 1,
+        "hero": true,
+        "qualities": ["WILD_CARD"]
+    },
+    {
+        "factions": ["AC", "ISA"],
+        "type": "SOLO",
+        "name": "Baron Cassius Mooregrave",
+        "dc": 1,
+        "hero": true,
+        "qualities": ["WILD_CARD"]
+    },
+    {
+        "factions": ["AC", "MW"],
+        "type": "SOLO",
+        "name": "Captain Jax Redblade",
+        "dc": 1,
+        "hero": true,
+        "qualities": ["WILD_CARD"]
+    },
+    {
+        "factions": ["AC", "EMP"],
+        "type": "SOLO",
+        "name": "Harlan Sek, the Curator",
+        "dc": 1,
+        "hero": true,
+        "qualities": ["WILD_CARD"]
+    },
+    {
+        "factions": ["EMP", "MW"],
+        "type": "SOLO",
+        "name": "Corebus",
+        "dc": 1,
+        "hero": true,
+        "qualities": ["WILD_CARD"]
+    },
+    {
+        "factions": ["EMP", "ISA"],
+        "type": "SOLO",
+        "name": "Doctor Myra Hurst",
+        "dc": 1,
+        "hero": true,
+        "qualities": ["WILD_CARD"]
+    },
+    {
+        "factions": ["ISA", "MW"],
+        "type": "SOLO",
+        "name": "Voitek Sudal, Bounty Hunter",
+        "dc": 1,
+        "hero": true,
+        "qualities": ["WILD_CARD"]
+    },
+    {
+        "factions": ["AC"],
+        "type": "SOLO",
+        "name": "Marauder",
+        "dc": 1
+    },
+    {
+        "factions": ["AC"],
+        "type": "SOLO",
+        "name": "Grafter",
+        "dc": 1
+    },
+    {
+        "factions": ["AC"],
+        "type": "SOLO",
+        "name": "Immortal Weaver",
+        "dc": 1
+    },
+    {
+        "factions": ["AC"],
+        "type": "SOLO",
+        "name": "Nekosphynx",
+        "dc": 1
+    },
+    {
+        "factions": ["AC"],
+        "type": "SOLO",
+        "name": "Vassal Boss",
+        "dc": 1
+    },
+    {
+        "factions": ["AC"],
+        "type": "SOLO",
+        "name": "Hiertheos Raxis",
+        "dc": 1,
+        "hero": true
+    },
+    {
+        "factions": ["AC"],
+        "type": "SOLO",
+        "name": "Phaetheon, the Whisper of Death",
+        "dc": 1,
+        "hero": true
+    },
+    {
+        "factions": ["AC"],
+        "type": "SOLO",
+        "name": "Divine Tempest",
+        "dc": 2,
+        "champion": true
+    },
+    {
+        "factions": ["AC"],
+        "type": "SQUAD",
+        "name": "Vassal Reavers",
+        "dc": 2
+    },
+    {"factions": ["AC"], "type": "SQUAD", "name": "Vassal Witch Hunters", "dc": 2},
+    {"factions": ["AC"], "type": "SQUAD", "name": "Vassal Raiders", "dc": 2},
+    {"factions": ["AC"], "type": "SQUAD", "name": "Talons", "dc": 2},
+    {"factions": ["AC"], "type": "SQUAD", "name": "Synturions", "dc": 2},
+    {
+        "factions": ["AC"],
+        "type": "VEHICLE",
+        "name": "Scythe",
+        "dc": 2,
+        "weapon_points": 3,
+        "hard_points": {
+            "weapon": {
+                "count": 1,
+                "weapons": ["Heavy Displacer", "Heavy Stinger", "Hollowphage Cannon"]
+            }
+        },
+        "url": "https://privateerpress.wiki/index.php?title=WNMScythe"
+    },
+    {
+        "factions": ["AC"],
+        "type": "VEHICLE",
+        "name": "Aenigma",
+        "dc": 2,
+        "hero": true,
+        "weapon_points": 3,
+        "hard_points": {
+            "weapon": {
+                "count": 1,
+                "weapons": [
+                    "Heavy Displacer",
+                    "Heavy Stinger",
+                    "Hellfire Cannon",
+                    "Hollowphage Cannon"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["AC"],
+        "type": "WARJACK",
+        "name": "Scourge",
+        "dc": 2,
+        "cortex": ["Dragon", "Killer", "Misanthrope", "Revenger", "Spider"],
+        "weapon_points": 5,
+        "hard_points": {
+            "arm": {
+                "count": 1,
+                "weapons": [
+                    "Force Rod",
+                    "Reaper",
+                    "Stinger Cannon",
+                    "Void Splitter",
+                    "none"
+                ]
+            },
+            "shoulder": {
+                "count": 2,
+                "weapons": [
+                    "Cloaking Device",
+                    "Entrophier",
+                    "Hex Cannon",
+                    "Hollowphage Cannon",
+                    "Nailer",
+                    "Rocket Pod",
+                    "none"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["AC"],
+        "type": "WARJACK",
+        "name": "Nemesis",
+        "dc": 3,
+        "cortex": [
+            "Battle Cruiser",
+            "Beholder",
+            "Ghost",
+            "Impulse Reciprocator",
+            "Oracle"
+        ],
+        "weapon_points": 8,
+        "hard_points": {
+            "arm": {
+                "count": 2,
+                "weapons": [
+                    "Displacer",
+                    "Fusion Saw",
+                    "Fusion Scythe",
+                    "Hellstormer",
+                    "Stinger Cannon",
+                    "Void Splitter",
+                    "none"
+                ]
+            },
+            "shoulder": {
+                "count": 2,
+                "weapons": [
+                    "Entrophier",
+                    "Hex Cannon",
+                    "Hollowphage Cannon",
+                    "Obliterator",
+                    "Rocket Pod",
+                    "Starfall Cannon",
+                    "none"
+                ]
+            }
+        }
+    },
+    {"factions": ["EMP"], "type": "SQUAD", "name": "Antecessors Eternal", "dc": -1, "hero": false},
+    {"factions": ["EMP"], "type": "SQUAD", "name": "Exalted Paragons", "dc": -1, "hero": false},
+    {"factions": ["EMP"], "type": "SQUAD", "name": "Saber Guardians", "dc": -1, "hero": false},
+    {"factions": ["EMP"], "type": "SQUAD", "name": "Saber Strikeforce", "dc": -1, "hero": false},
+    {"factions": ["EMP"], "type": "SQUAD", "name": "Saber Vanguard", "dc": -1, "hero": false},
+    {
+        "factions": ["EMP"],
+        "type": "SOLO",
+        "name": "Astreus, Aeon of the First Magnitude",
+        "dc": -1,
+        "hero": true
+    },
+    {"factions": ["EMP"], "type": "SOLO", "name": "Aurelion, Aeon Weaver", "dc": -1, "hero": true},
+    {
+        "factions": ["EMP"],
+        "type": "SOLO",
+        "name": "Eternal Metator",
+        "dc": -1,
+        "hero": false,
+        "champion": true
+    },
+    {"factions": ["EMP"], "type": "SOLO", "name": "Factotum", "dc": -1, "hero": false},
+    {"factions": ["EMP"], "type": "SOLO", "name": "Fulcrum", "dc": -1, "hero": false},
+    {"factions": ["EMP"], "type": "SOLO", "name": "Heavy Saber", "dc": -1, "hero": false},
+    {"factions": ["EMP"], "type": "SOLO", "name": "Oculus", "dc": -1, "hero": false},
+    {"factions": ["EMP"], "type": "SOLO", "name": "Paragon Commander", "dc": -1, "hero": false},
+    {
+        "factions": ["EMP"],
+        "type": "VEHICLE",
+        "name": "Execrator Nix",
+        "dc": -1,
+        "hero": true,
+        "weapons_points": 3,
+        "hard_points": {
+            "weapon": {
+                "count": 1,
+                "weapons": [
+                    "Force Generator",
+                    "Heavy Antiminator",
+                    "Nova Cannon",
+                    "Shadow Matrix"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["EMP"],
+        "type": "VEHICLE",
+        "name": "Zenith",
+        "dc": -1,
+        "hero": false,
+        "weapons_points": 3,
+        "hard_points": {
+            "weapon": {
+                "count": 1,
+                "weapons": [
+                    "Force Generator",
+                    "Heavy Antiminator",
+                    "Nova Cannon"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["EMP"],
+        "type": "WARJACK",
+        "name": "Daemon",
+        "dc": -1,
+        "hero": false,
+        "cortex": ["Eidolon", "Guardian", "Hound", "Specter", "Wraith"],
+        "weapon_points": 5,
+        "hard_points": {
+            "arm": {
+                "count": 2,
+                "weapons": [
+                    "Antiminator",
+                    "Gravitronic Lash",
+                    "Metaperceptor",
+                    "Phase Trajectile Cannon",
+                    "Plasma Blade",
+                    "Protean Forge",
+                    "none"
+                ]
+            },
+            "back": {
+                "count": 1,
+                "weapons": [
+                    "Force Shield Projector",
+                    "Meteor Cannon",
+                    "Nova Cannon",
+                    "Starfire Array",
+                    "none"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["EMP"],
+        "type": "WARJACK",
+        "name": "Sentinel",
+        "dc": -1,
+        "hero": false,
+        "cortex": ["Avatar", "Divinator", "Hellion", "Hurricane", "Numen"],
+        "weapon_points": 8,
+        "hard_points": {
+            "arm": {
+                "count": 2,
+                "weapons": [
+                    "Antiminator",
+                    "Arcantrik Destabilizer",
+                    "Gravitronic Lash",
+                    "Heavy Plasma Blade",
+                    "Metaperceptor",
+                    "Phase Trajectile Cannon",
+                    "none"
+                ]
+            },
+            "back": {
+                "count": 1,
+                "weapons": [
+                    "Force Shield Projector",
+                    "Meteor Cannon",
+                    "Nova Cannon",
+                    "Starfire Array",
+                    "none"
+                ]
+            },
+            "chest": {
+                "count": 1,
+                "weapons": [
+                    "Chronomorphic Accelerator",
+                    "Cyclotronic Razor",
+                    "Dark Star",
+                    "Eclipse Inducer",
+                    "none"
+                ]
+            }
+        }
+    },
+    {"factions": ["ISA"], "type": "SQUAD", "name": "Paladin Annihilators", "dc": -1, "hero": false},
+    {"factions": ["ISA"], "type": "SQUAD", "name": "Paladin Defenders", "dc": -1, "hero": false},
+    {"factions": ["ISA"], "type": "SQUAD", "name": "Paladin Enforcers", "dc": -1, "hero": false},
+    {"factions": ["ISA"], "type": "SQUAD", "name": "Regulators", "dc": -1, "hero": false},
+    {"factions": ["ISA"], "type": "SQUAD", "name": "Tracers", "dc": -1, "hero": false},
+    {"factions": ["ISA"], "type": "SOLO", "name": "Automech", "dc": -1, "hero": false},
+    {"factions": ["ISA"], "type": "SOLO", "name": "Justicar Voss", "dc": -1, "hero": true},
+    {"factions": ["ISA"], "type": "SOLO", "name": "Major Aysa Drayce", "dc": -1, "hero": true},
+    {"factions": ["ISA"], "type": "SOLO", "name": "Paladin Commander", "dc": -1, "hero": false},
+    {"factions": ["ISA"], "type": "SOLO", "name": "Paladin Siegebreaker", "dc": -1, "hero": false},
+    {"factions": ["ISA"], "type": "SOLO", "name": "Paladin Weaver", "dc": -1, "hero": false},
+    {"factions": ["ISA"], "type": "SOLO", "name": "Regulator Reeve", "dc": -1, "hero": false},
+    {
+        "factions": ["ISA"],
+        "type": "VEHICLE",
+        "name": "Duchess",
+        "dc": -1,
+        "hero": true,
+        "weapon_points": 3,
+        "hard_points": {
+            "weapon": {
+                "count": 1,
+                "weapons": [
+                    "Force Cannon",
+                    "Immolator",
+                    "Null Torpedo",
+                    "Tempest Cannon"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["ISA"],
+        "type": "VEHICLE",
+        "name": "Interceptor",
+        "dc": -1,
+        "hero": false,
+        "weapon_points": 3,
+        "hard_points": {
+            "weapon": {
+                "count": 1,
+                "weapons": [
+                    "Force Cannon",
+                    "Immolator",
+                    "Tempest Cannon"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["ISA"],
+        "type": "WARJACK",
+        "name": "Firebrand",
+        "dc": -1,
+        "hero": false,
+        "cortex": ["'Jack Hunter", "Neural Web", "Recon", "Reflex", "Vanquisher"],
+        "weapon_points": 5,
+        "hard_points": {
+            "arm": {
+                "count": 2,
+                "weapons": [
+                    "Assault Rifle & Bayonet",
+                    "Force Hammer",
+                    "Fusion Glaive",
+                    "Grenade Launcher",
+                    "Repulsor Shield",
+                    "Sun Piercer",
+                    "none"
+                ]
+            },
+            "shoulder": {
+                "count": 1,
+                "weapons": [
+                    "Harbinger Cannon",
+                    "Immolator",
+                    "Maelstrom",
+                    "Null Cannon",
+                    "none"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["ISA"],
+        "type": "WARJACK",
+        "name": "Headsman",
+        "dc": -1,
+        "hero": false,
+        "champion": true
+    },
+    {
+        "factions": ["ISA"],
+        "type": "WARJACK",
+        "name": "Morningstar",
+        "dc": -1,
+        "hero": false,
+        "cortex": ["Dauntless", "Deadeye", "Defender", "Demolisher", "Exchanger"],
+        "weapon_points": 8,
+            "arm": {
+                "count": 2,
+                "weapons": [
+                    "Assault Shield",
+                    "Force Hammer",
+                    "Grenade Launcher",
+                    "Heavy Fusion Glaive",
+                    "Seeker",
+                    "Sun Piercer",
+                    "none"
+                ]
+            },
+            "shoulder": {
+                "count": 2,
+                "weapons": [
+                    "Gate Crasher",
+                    "Harbinger Cannon",
+                    "Immolator",
+                    "Maelstrom",
+                    "Null Cannon",
+                    "Starburst Missiles",
+                    "none"
+                ]
+            }
+        },
+    {"factions": ["MW"], "type": "SQUAD", "name": "Dragoon Assault Team", "dc": -1, "hero": false},
+    {"factions": ["MW"], "type": "SQUAD", "name": "Dragoon Strike Team", "dc": -1, "hero": false},
+    {"factions": ["MW"], "type": "SQUAD", "name": "Ranger Fire Team", "dc": -1, "hero": false},
+    {"factions": ["MW"], "type": "SQUAD", "name": "Ranger Heavy Support", "dc": -1, "hero": false},
+    {"factions": ["MW"], "type": "SQUAD", "name": "Ranger Infiltrators", "dc": -1, "hero": false},
+    {"factions": ["MW"], "type": "SOLO", "name": "Artemis Fang", "dc": -1, "hero": true},
+    {"factions": ["MW"], "type": "SOLO", "name": "Coalition Weaver", "dc": -1, "hero": false},
+    {"factions": ["MW"], "type": "SOLO", "name": "Combat Engineer","dc": -1, "hero": false},
+    {
+        "factions": ["MW"],
+        "type": "SOLO",
+        "name": "Dragoon Strike Team Leader",
+        "dc": -1,
+        "hero": false
+    },
+    {"factions": ["MW"], "type": "SOLO", "name": "Hunter", "dc": -1, "hero": false},
+    {"factions": ["MW"], "type": "SOLO", "name": "Ranger Outrider", "dc": -1, "hero": false},
+    {"factions": ["MW"], "type": "SOLO", "name": "Warchief Malek Sezzar", "dc": -1, "hero": true},
+    {
+        "factions": ["MW"],
+        "type": "VEHICLE",
+        "name": "Fiddler & Co.",
+        "dc": -1,
+        "hero": true,
+        "weapon_points": 3,
+        "hard_points": {
+            "weapon": {
+                "count": 1,
+                "weapons": [
+                    "Blazer",
+                    "Particle Blaster",
+                    "Slug Cannon",
+                    "Talon Mk II"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["MW"],
+        "type": "VEHICLE",
+        "name": "Razorbat",
+        "dc": -1,
+        "hero": false,
+        "weapon_points": 3,
+        "hard_points": {
+            "weapon": {
+                "count": 1,
+                "weapons": [
+                    "Blazer",
+                    "Slug Cannon",
+                    "Talon Mk II"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["MW"],
+        "type": "VEHICLE",
+        "name": "Storm Vulture",
+        "dc": -1,
+        "hero": false,
+        "champion": true,
+        "weapon_points": 2,
+        "hard_points": {
+            "weapon": {
+                "count": 1,
+                "weapons": [
+                    "Flamethrower",
+                    "Heavy Machine Gun",
+                    "Vortex Missile"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["MW"],
+        "type": "WARJACK",
+        "name": "Dusk Wolf",
+        "dc": -1,
+        "hero": false,
+        "cortex": ["Fighter", "Neural Net", "Scout", "Sniper", "Void Gazer"],
+        "weapon_points": 5,
+        "hard_points": {
+            "arm": {
+                "count": 2,
+                "weapons": [
+                    "Battle Rifle",
+                    "Flamethrower",
+                    "Impaler",
+                    "Particle Accelerator",
+                    "Ripper",
+                    "Slug Gun",
+                    "none"
+                ]
+            },
+            "shoulder": {
+                "count": 1,
+                "weapons": [
+                    "Blazer",
+                    "Rail Gun",
+                    "Talon Rocket Pod",
+                    "Wildflower Mine Layer",
+                    "none"
+                ]
+            }
+        }
+    },
+    {
+        "factions": ["MW"],
+        "type": "WARJACK",
+        "name": "Strike Raptor",
+        "dc": -1,
+        "hero": false,
+        "cortex": ["Ace", "Bomber", "Dog Fighter", "Precision", "Revelator"],
+        "weapon_points": 8,
+        "hard_points": {
+            "arm": {
+                "count": 2,
+                "weapons": [
+                    "Battle Rifle",
+                    "Flamethrower",
+                    "Fusion Drill",
+                    "Particle Accelerator",
+                    "Rock Buster",
+                    "Slug Gun",
+                    "none"
+                ]
+            },
+            "shoulder": {
+                "count": 2,
+                "weapons": [
+                    "Blazer",
+                    "Cyclone Cannon",
+                    "Particle Cannon",
+                    "Rail Gun",
+                    "Talon Rocket Pod",
+                    "Vortex Missile",
+                    "none"
+                ]
+            }
+        }
+    }
+]
