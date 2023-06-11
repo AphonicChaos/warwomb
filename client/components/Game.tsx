@@ -1,16 +1,8 @@
-import {
-  IconButton,
-  Text,
-  Flex,
-  Spacer,
-  Grid,
-  GridItem,
-} from "@chakra-ui/react";
+import { IconButton, Text, Flex, Spacer, Grid, GridItem } from "@chakra-ui/react";
 import { FiSettings } from "react-icons/fi";
 import { TokenDisplay } from "./TokenDisplay";
 
-const backgroundUrl =
-  "https://www.myfreetextures.com/wp-content/uploads/2012/05/2011-06-11-09606.jpg";
+const backgroundUrl = "https://www.myfreetextures.com/wp-content/uploads/2012/05/2011-06-11-09606.jpg";
 
 export const Game = () => {
   return (
@@ -30,10 +22,7 @@ export const Game = () => {
     >
       <GridItem border="1" area="player">
         <Flex gap="2" direction="column" h="full" align="center">
-          <TokenDisplay
-            player={{ name: "E", color: "red" }}
-            tokens={[{ name: "A" }, { name: "B" }, { name: "C" }]}
-          />
+          <TokenDisplay player={{ name: "E", color: "red" }} tokens={[{ name: "A" }, { name: "B" }, { name: "C" }]} />
         </Flex>
       </GridItem>
       <GridItem border="1" area="action">
@@ -47,20 +36,10 @@ export const Game = () => {
         <Flex gap="2" direction="column" h="full" align="center">
           <TokenDisplay
             player={{ name: "J", color: "green" }}
-            tokens={[
-              { name: "W" },
-              { name: "X" },
-              { name: "Y" },
-              { name: "Z" },
-            ]}
+            tokens={[{ name: "W" }, { name: "X" }, { name: "Y" }, { name: "Z" }]}
           />
           <Spacer />
-          <IconButton
-            aria-label="settings"
-            size="lg"
-            backgroundColor="blue.600"
-            icon={<FiSettings />}
-          />
+          <IconButton aria-label="settings" size="lg" backgroundColor="blue.600" icon={<FiSettings />} />
         </Flex>
       </GridItem>
       <GridItem border="1" area="table">

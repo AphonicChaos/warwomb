@@ -10,11 +10,7 @@ export const RoutingError = () => {
       </Text>
       <Text fontSize="xl">Sorry, an unexpected error has occured.</Text>
       <Text as="i">
-        {isRouteErrorResponse(error)
-          ? error.statusText
-          : error instanceof Error
-          ? error.message
-          : "Unknown Error"}
+        {isRouteErrorResponse(error) ? error.statusText : error instanceof Error ? error.message : "Unknown Error"}
       </Text>
     </Flex>
   );
