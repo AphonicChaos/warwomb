@@ -2,7 +2,7 @@ import json
 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 
-router = APIRouter(prefix="/ws", tags=['websockets'])
+router = APIRouter(prefix="/ws", tags=["websockets"])
 
 
 class ConnectionManager:

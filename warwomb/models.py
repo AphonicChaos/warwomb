@@ -19,8 +19,7 @@ class UnitFactionLink(SQLModel, table=True):
 
     unit_id: Optional[int] = Field(foreign_key="units.id", primary_key=True)
     unit_faction_id: Optional[int] = Field(
-        foreign_key="unit_factions.id",
-        primary_key=True
+        foreign_key="unit_factions.id", primary_key=True
     )
 
 
@@ -29,8 +28,7 @@ class UnitAdvantageLink(SQLModel, table=True):
 
     unit_id: Optional[int] = Field(foreign_key="units.id", primary_key=True)
     unit_advantange_id: Optional[int] = Field(
-        foreign_key="unit_advantages.id",
-        primary_key=True
+        foreign_key="unit_advantages.id", primary_key=True
     )
 
 
@@ -39,20 +37,16 @@ class UnitWeaponLink(SQLModel, table=True):
 
     unit_id: Optional[int] = Field(foreign_key="units.id", primary_key=True)
     unit_weapon_id: Optional[int] = Field(
-        foreign_key="unit_weapons.id",
-        primary_key=True
+        foreign_key="unit_weapons.id", primary_key=True
     )
 
 
 class WeaponEnergyTypeLink(SQLModel, table=True):
     __tablename__ = "weapon_energy_type_links"
 
-    weapon_id: Optional[int] = Field(
-        foreign_key="unit_weapons.id", primary_key=True
-    )
+    weapon_id: Optional[int] = Field(foreign_key="unit_weapons.id", primary_key=True)
     energy_type_id: Optional[int] = Field(
-        foreign_key="weapon_energy_types.id",
-        primary_key=True
+        foreign_key="weapon_energy_types.id", primary_key=True
     )
 
 
@@ -73,16 +67,13 @@ class Unit(SQLModel, table=True):
 
     types: List["UnitType"] = Relationship(back_populates="unit")
     factions: List["Faction"] = Relationship(
-        back_populates="units",
-        link_model=UnitFactionLink
+        back_populates="units", link_model=UnitFactionLink
     )
     advantages: List["Advantage"] = Relationship(
-        back_populates="units",
-        link_model=UnitAdvantageLink
+        back_populates="units", link_model=UnitAdvantageLink
     )
     weapons: List["Weapon"] = Relationship(
-        back_populates="units",
-        link_model=UnitWeaponLink
+        back_populates="units", link_model=UnitWeaponLink
     )
 
     def __str__(self) -> str:
@@ -157,8 +148,7 @@ class Faction(SQLModel, table=True):
     name: str = Field(unique=True)
 
     units: List["Unit"] = Relationship(
-        back_populates="factions",
-        link_model=UnitFactionLink
+        back_populates="factions", link_model=UnitFactionLink
     )
 
     def __str__(self) -> str:
@@ -172,8 +162,7 @@ class Advantage(SQLModel, table=True):
     name: str = Field(unique=True)
 
     units: List["Unit"] = Relationship(
-        back_populates="advantages",
-        link_model=UnitAdvantageLink
+        back_populates="advantages", link_model=UnitAdvantageLink
     )
 
     def __str__(self) -> str:
@@ -193,12 +182,10 @@ class Weapon(SQLModel, table=True):
     type: "WeaponType" = Relationship(back_populates="weapon")
     quality: "WeaponQuality" = Relationship(back_populates="weapon")
     energy_types: List["WeaponEnergyType"] = Relationship(
-        back_populates="weapons",
-        link_model=WeaponEnergyTypeLink
+        back_populates="weapons", link_model=WeaponEnergyTypeLink
     )
     units: List["Unit"] = Relationship(
-        back_populates="weapons",
-        link_model=UnitWeaponLink
+        back_populates="weapons", link_model=UnitWeaponLink
     )
 
     def __str__(self) -> str:
@@ -212,8 +199,7 @@ class WeaponEnergyType(SQLModel, table=True):
     name: str = Field(unique=True)
 
     weapons: List["Weapon"] = Relationship(
-        back_populates="energy_types",
-        link_model=WeaponEnergyTypeLink
+        back_populates="energy_types", link_model=WeaponEnergyTypeLink
     )
 
     def __str__(self) -> str:

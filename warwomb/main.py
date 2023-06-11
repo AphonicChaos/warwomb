@@ -26,7 +26,7 @@ from .admin import (
     WeaponEnergyTypeAdmin,
     WeaponQualityAdmin,
     WeaponTypeAdmin,
-    authentication_backend
+    authentication_backend,
 )
 
 main.load_dotenv()
@@ -55,18 +55,10 @@ STATIC_DIR = os.path.abspath(f"{os.path.dirname(__file__)}../../static")
 
 # NEW CODE START {
 
-csp = secure.ContentSecurityPolicy().default_src(
-    "'self'"
-).frame_ancestors("'none'")
+csp = secure.ContentSecurityPolicy().default_src("'self'").frame_ancestors("'none'")
 hsts = secure.StrictTransportSecurity().max_age(31536000).include_subdomains()
 referrer = secure.ReferrerPolicy().no_referrer()
-cache_value = (
-    secure.CacheControl()
-          .no_cache()
-          .no_store()
-          .max_age(0)
-          .must_revalidate()
-    )
+cache_value = secure.CacheControl().no_cache().no_store().max_age(0).must_revalidate()
 x_frame_options = secure.XFrameOptions().deny()
 
 secure_headers = secure.Secure(
@@ -117,14 +109,12 @@ def protected():
 )
 def admin():
     return {"text": "This is an admin message."}
+
+
 # NEW CODE END }
 
 
-app.mount(
-    "/",
-    StaticFiles(directory=STATIC_DIR, html=True),
-    name="static"
-)
+app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
 
 
 def start():
@@ -132,9 +122,9 @@ def start():
         "warwomb.main:app",
         host="0.0.0.0",
         port=os.getenv("PORT", 8000),
-        reload=os.getenv("DEBUG", 'True').lower() == 'true',
+        reload=os.getenv("DEBUG", "True").lower() == "true",
         forwarded_allow_ips="*",
-        proxy_headers=True
+        proxy_headers=True,
     )
 
 

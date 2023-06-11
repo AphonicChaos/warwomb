@@ -2,10 +2,7 @@ from typing import NamedTuple
 
 from starlette.requests import Request as StarletteRequest
 
-from .custom_exceptions import (
-    BadCredentialsException,
-    RequiresAuthenticationException
-)
+from .custom_exceptions import BadCredentialsException, RequiresAuthenticationException
 
 
 class AuthorizationHeaderElements(NamedTuple):
