@@ -1,6 +1,6 @@
 import { ChangeEventHandler, FocusEventHandler } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
-import { 
+import {
   Box,
   Button,
   Drawer,
@@ -54,9 +54,9 @@ export const Toolbox = ({
         </DrawerHeader>
         <DrawerBody>
           <Stack spacing='24px'>
-            <Button 
-              onClick={() => 
-                isAuthenticated 
+            <Button
+              onClick={() =>
+                isAuthenticated
                   ? logout()
                   : loginWithRedirect()
               }
@@ -96,8 +96,8 @@ export const Toolbox = ({
 
             <Box>
               <FormLabel htmlFor='game-type'>Game Type</FormLabel>
-              <Select 
-                id='game-type' 
+              <Select
+                id='game-type'
                 value={gameType}
                 onChange={onGameTypeChanged}
               >

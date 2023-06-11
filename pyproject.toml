@@ -21,6 +21,7 @@ sqladmin = "^0.10.1"
 httpx = "^0.23.3"
 secure = "^0.3.0"
 pyjwt = "^2.6.0"
+pre-commit = "^3.3.2"
 
 [tool.poetry.scripts]
 start = "warwomb.main:start"

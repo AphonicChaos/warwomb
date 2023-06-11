@@ -1,10 +1,10 @@
-import { 
-  useState, 
-  useEffect, 
-  ChangeEvent, 
-  FocusEvent, 
+import {
+  useState,
+  useEffect,
+  ChangeEvent,
+  FocusEvent,
 } from 'react';
-import { 
+import {
   ChakraProvider,
   Grid,
   GridItem,
@@ -46,7 +46,7 @@ const units: Unit[] = [
 ];
 
 const Root = () => {
-  const { 
+  const {
     isOpen: toolboxIsOpen,
     onOpen: onToolboxOpen,
     onClose: onToolboxClose
@@ -101,19 +101,19 @@ const Root = () => {
         <PageHeader onToolboxOpen={onToolboxOpen} />
       </GridItem>
       <GridItem area="main">
-        <Toolbox 
-          isOpen={toolboxIsOpen} 
-          onClose={onToolboxClose} 
+        <Toolbox
+          isOpen={toolboxIsOpen}
+          onClose={onToolboxClose}
           mapUrl={mapUrl}
           onMapUrlUpdated={handleMapUrlUpdated}
           gameType={gameType}
           onGameTypeChanged={handleGameTypeChanged}
           onTableSizeChanged={handleTableSizeChanged}
         />
-        <Table 
-          backgroundUrl={mapUrl} 
+        <Table
+          backgroundUrl={mapUrl}
           pixelsPerInch={pixelsPerInch}
-          size={size} 
+          size={size}
           selectedUnit={selectedUnit}
           onUnitPlaced={() => setSelectedUnit(undefined)}
         />
@@ -133,7 +133,7 @@ export const App = () => {
     authorizationParams={{
       redirect_uri: window.location.origin
     }}
-    > 
+    >
       <ChakraProvider theme={theme}>
         <Root />
       </ChakraProvider>

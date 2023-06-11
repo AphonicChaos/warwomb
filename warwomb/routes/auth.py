@@ -7,7 +7,7 @@ from warwomb.auth import oauth
 from warwomb.database import engine
 from warwomb.models import AuthProvider, User, Role
 
-router = APIRouter(prefix="/auth", tags=['auth'])
+router = APIRouter(prefix="/auth", tags=["auth"])
 
 
 @router.get("/login")
@@ -28,16 +28,14 @@ async def auth(request: Request):
             normal_role = session.exec(
                 select(Role).where(Role.name == "normal")
             ).first()
-            statement = select(User).where(
-                User.email == user_info.email
-            )
+            statement = select(User).where(User.email == user_info.email)
             user = session.exec(statement).first()
 
             if not user:
                 user = User(
                     email=user_info.email,
                     role=normal_role,
-                    auth_provider=AuthProvider.Google
+                    auth_provider=AuthProvider.Google,
                 )
                 session.add(user)
                 session.commit()
@@ -55,8 +53,8 @@ async def logout(request: Request):
     access_token = request.session.pop("access_token", None)
 
     if access_token:
-        httpx.post("https://accounts.google.com/o/oauth2/revoke", data={
-            "token": access_token
-        })
+        httpx.post(
+            "https://accounts.google.com/o/oauth2/revoke", data={"token": access_token}
+        )
 
     return RedirectResponse(url="/")

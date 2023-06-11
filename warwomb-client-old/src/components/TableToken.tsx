@@ -48,7 +48,7 @@ export const TableToken = ({
       w={`${sizePx}px`}
       h={`${sizePx}px`}
       name={unit.name}
-      bg={bgList[unit.index]} 
+      bg={bgList[unit.index]}
     />
   );
 };

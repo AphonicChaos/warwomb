@@ -17,13 +17,13 @@ export const PageHeader = ({
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex m={4}>
-      <IconButton 
+      <IconButton
         aria-label='Menu'
         icon={<HamburgerIcon />}
         onClick={onToolboxOpen}
       />
       <Spacer />
-      <IconButton 
+      <IconButton
         aria-label='Color mode'
         icon={
           colorMode === 'dark'

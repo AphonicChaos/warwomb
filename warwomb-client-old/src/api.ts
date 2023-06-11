@@ -12,7 +12,7 @@ export const useApi = (): IUseApi => {
     }
   });
 
-  return { 
+  return {
     echo: (message: string) => sendJsonMessage({
       message
     }),

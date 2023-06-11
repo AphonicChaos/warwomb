@@ -1,10 +1,10 @@
 # War Womb
 
 War Womb is a web app that let's you play WarCaster: Neo-Mechanika online.
- 
+
 # Development
- This app is written as a mostly traditional client-server application. 
- The source for the frontend is in the 'src' directory, while the source for 
+ This app is written as a mostly traditional client-server application.
+ The source for the frontend is in the 'src' directory, while the source for
  the backend is in 'warwomb'.
 
 ## Architecture

@@ -39,4 +39,3 @@ export type PlacedUnit = SelectedUnit & {
 export type SelectedUnit = Unit & {
     index: number;
 };
-

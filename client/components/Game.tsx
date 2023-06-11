@@ -17,18 +17,18 @@ export const Game = () => {
     <Grid
       opacity="0.7"
       background={`url(${backgroundUrl})`}
-      padding="4"
+      columnGap="10"
       h="100vh"
       w="full"
       templateColumns="48px 1fr 48px"
-      templateRows="64px 1fr 48px"
+      templateRows="256px 1fr 48px"
       templateAreas={`
       "player action opponent"
       "player table opponent"
       "player rack opponent"
       `}
     >
-      <GridItem border="1" area="player">
+      <GridItem border="1" area="player" bg="blackAlpha.800">
         <Flex gap="2" direction="column" h="full" align="center">
           <TokenDisplay
             player={{ name: "E", color: "red" }}
@@ -36,14 +36,14 @@ export const Game = () => {
           />
         </Flex>
       </GridItem>
-      <GridItem border="1" area="action">
+      <GridItem bg="blackAlpha.800" border="1" area="action">
         <Flex justify="center" align="center">
-          <Text fontWeight="bold" fontSize="3xl" color="black">
+          <Text fontWeight="bold" fontSize="3xl">
             Where current action is displayed
           </Text>
         </Flex>
       </GridItem>
-      <GridItem border="1" area="opponent">
+      <GridItem border="1" area="opponent" bg="blackAlpha.800">
         <Flex gap="2" direction="column" h="full" align="center">
           <TokenDisplay
             player={{ name: "J", color: "green" }}
@@ -68,9 +68,9 @@ export const Game = () => {
           Table
         </Flex>
       </GridItem>
-      <GridItem border="1" area="rack">
+      <GridItem border="1" area="rack" bg="blackAlpha.800">
         <Flex h="full" justify="center" align="center">
-          <Text fontWeight="bold" fontSize="3xl" color="gray.900">
+          <Text fontWeight="bold" fontSize="3xl">
             Where cards in player's rack are displayed
           </Text>
         </Flex>

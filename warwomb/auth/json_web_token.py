@@ -4,10 +4,7 @@ from dataclasses import dataclass
 from dotenv import main
 import jwt
 
-from .custom_exceptions import (
-    BadCredentialsException,
-    UnableCredentialsException
-)
+from .custom_exceptions import BadCredentialsException, UnableCredentialsException
 
 main.load_dotenv()
 

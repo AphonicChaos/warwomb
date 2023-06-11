@@ -1,8 +1,8 @@
-import { 
+import {
   Avatar,
-  Box, 
-  Flex, 
-  IconButton, 
+  Box,
+  Flex,
+  IconButton,
   Icon,
   Menu,
   MenuButton,
@@ -26,8 +26,8 @@ export const PageFooter = ({
   return (
     <Flex m={4} align="center" justify="center" position='relative'>
       <Menu>
-        <MenuButton 
-          as={IconButton} 
+        <MenuButton
+          as={IconButton}
           position='absolute'
           left={0}
           aria-label='Menu'

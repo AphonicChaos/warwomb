@@ -5,7 +5,7 @@ import { Flex, Box, chakra, shouldForwardProp } from '@chakra-ui/react';
 import { TableToken } from './TableToken';
 import { PlacedUnit, SelectedUnit } from '/src/types';
 
-import { 
+import {
   motion,
   isValidMotionProp,
   useMotionValue
@@ -32,7 +32,7 @@ const clamp = (value: number, lowerBound: number, upperBound: number) => Math.ma
   )
 );
 
-export const Table = ({ 
+export const Table = ({
   size = window.innerHeight,
   backgroundUrl,
   pixelsPerInch,
@@ -97,18 +97,18 @@ export const Table = ({
           h={size}
         >
         {selectedUnit && elX && elY && (
-          <TableToken 
-            unit={selectedUnit} 
-            pixelsPerInch={pixelsPerInch} 
+          <TableToken
+            unit={selectedUnit}
+            pixelsPerInch={pixelsPerInch}
             x={elX}
             y={elY}
           />
         )}
         {units.map((unit: PlacedUnit) => (
-          <TableToken 
+          <TableToken
             key={unit.index}
-            unit={unit} 
-            pixelsPerInch={pixelsPerInch} 
+            unit={unit}
+            pixelsPerInch={pixelsPerInch}
             x={unit.x}
             y={unit.y}
             placed
