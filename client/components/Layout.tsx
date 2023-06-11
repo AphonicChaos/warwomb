@@ -6,7 +6,11 @@ export type LayoutProps = {
 };
 
 export const Layout: React.FC<LayoutProps> = ({ showNavBar = false }) => (
-  <Grid h="100vh" templateColumns="1fr" templateRows={showNavBar ? "3rem 1fr" : "1fr"}>
+  <Grid
+    h="100vh"
+    templateColumns="1fr"
+    templateRows={showNavBar ? "3rem 1fr" : "1fr"}
+  >
     {showNavBar && (
       <GridItem bg="red.900">
         <Flex p="4" align="center" h="full">
