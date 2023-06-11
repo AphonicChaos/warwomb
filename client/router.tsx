@@ -1,13 +1,6 @@
-import {
-  createBrowserRouter,
-} from 'react-router-dom';
+import { createBrowserRouter } from "react-router-dom";
 
-import { 
-  Game,
-  Layout,
-  MainMenu,
-  RoutingError,
-} from './components';
+import { Game, Layout, MainMenu, RoutingError } from "./components";
 
 export const router = createBrowserRouter([
   {
@@ -17,9 +10,9 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <MainMenu />
-      }
-    ]
+        element: <MainMenu />,
+      },
+    ],
   },
   {
     path: "/play",
@@ -27,8 +20,8 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Game />
-      }
-    ]
-  }
+        element: <Game />,
+      },
+    ],
+  },
 ]);

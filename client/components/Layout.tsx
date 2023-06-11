@@ -1,19 +1,11 @@
-import { Outlet } from 'react-router-dom';
-import { 
-  Link,
-  Flex,
-  Grid,
-  GridItem,
-  Spacer,
-} from '@chakra-ui/react';
+import { Outlet } from "react-router-dom";
+import { Link, Flex, Grid, GridItem, Spacer } from "@chakra-ui/react";
 
 export type LayoutProps = {
-  showNavBar?: boolean
+  showNavBar?: boolean;
 };
 
-export const Layout: React.FC<LayoutProps> = ({
-  showNavBar = false
-}) => (
+export const Layout: React.FC<LayoutProps> = ({ showNavBar = false }) => (
   <Grid
     h="100vh"
     templateColumns="1fr"
