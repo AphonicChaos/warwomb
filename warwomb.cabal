@@ -1,0 +1,54 @@
+cabal-version:      3.4
+name:               warwomb
+version:            0.1.0.0
+synopsis:
+    Backend server for Warwomb, an app that lets you play "Warcaster: Neo-Mechanika" online
+
+-- description:
+homepage:           warwomb.aphonic.org
+license:            MIT
+license-file:       LICENSE
+author:             Edwin Marshall
+maintainer:         emarshall85@gmail.com
+-- copyright:
+category:           Game
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+-- extra-source-files:
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    -- exposed-modules:
+    -- other-modules:
+    -- other-extensions:
+    build-depends:    base ^>=4.17.1.0
+    hs-source-dirs:   src
+    default-language: GHC2021
+
+executable warwomb
+    import:           warnings
+    main-is:          Main.hs
+    -- other-modules:
+    -- other-extensions:
+    build-depends:
+        base ^>=4.17.1.0
+      , dotherside
+      , warwomb
+
+    hs-source-dirs:   app
+    default-language: GHC2021
+
+test-suite warwomb-test
+    import:           warnings
+    default-language: GHC2021
+    -- other-modules:
+    -- other-extensions:
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.17.1.0,
+        warwomb
